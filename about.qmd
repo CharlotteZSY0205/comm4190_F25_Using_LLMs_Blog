@@ -1,8 +1,8 @@
 ---
 title: About
-image: profile.jpg
+image: About_profile.jpg
 about:
-  template: jolla
+  template: minty
 ---
 
 About this blog
