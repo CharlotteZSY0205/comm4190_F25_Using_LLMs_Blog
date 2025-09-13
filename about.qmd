@@ -5,4 +5,5 @@ about:
   template: jolla
 ---
 
-About this blog
+Welcome to my blog! ✨
+Here I share my adventures with different AI tools — from writing and brainstorming, to making music, images, and even videos. It’s a space where I explore how AI can spark creativity, support research, and sometimes surprise me in unexpected ways.
