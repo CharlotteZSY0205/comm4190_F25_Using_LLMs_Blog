@@ -2,7 +2,7 @@
 title: About
 image: About_profile.jpg
 about:
-  template: minty
+  template: jolla
 ---
 
 About this blog
