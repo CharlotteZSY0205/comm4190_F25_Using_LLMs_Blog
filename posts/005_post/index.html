@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Shiyang Zhang">
+<meta name="dcterms.date" content="2025-09-17">
+<meta name="description" content="As a programming novice, I recently decided to try something bold: building a VS Code extension with the help of AI. I wanted to document this journey because it shows both the power and the challenges of working with AI tools when you’re not an experienced developer.">
 
-<title>Shiyang’s Explorations with LLMs</title>
+<title>Can AI Help Building My Customized Website? – Shiyang’s Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dc797a86ed2ad7be54980078017504d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-dc797a86ed2ad7be54980078017504d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,79 +71,21 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Shiyang’s Explorations with LLMs</span>
     </a>
   </div>
@@ -153,7 +96,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -176,218 +119,101 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Shiyang’s Explorations with LLMs</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Can AI Help Building My Customized Website?</h1>
+                  <div>
+        <div class="description">
+          As a programming novice, I recently decided to try something bold: building a VS Code extension with the help of AI. I wanted to document this journey because it shows both the power and the challenges of working with AI tools when you’re not an experienced developer.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Coding</div>
+                <div class="quarto-category">Extension Devlopment</div>
+                <div class="quarto-category">Cline</div>
+                <div class="quarto-category">Codex</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Shiyang Zhang </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 17, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2hhdEdQVA==">ChatGPT <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2xpbmU=">Cline <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZXg=">Codex <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kaW5n">Coding <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGVzaWdu">Design <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RXh0ZW5zaW9uJTIwRGV2bG9wbWVudA==">Extension Devlopment <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExNcw==">LLMs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bG9naWM=">logic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGxhbm5pbmc=">planning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvbXB0aW5n">prompting <span class="quarto-category-count">(4)</span></div><div class="category" data-category="V2Vic2l0ZQ==">Website <span class="quarto-category-count">(2)</span></div><div class="category" data-category="V0lY">WIX <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q29kaW5nJTJDRXh0ZW5zaW9uJTIwRGV2bG9wbWVudCUyQ0NsaW5lJTJDQ29kZXg=" data-listing-date-sort="1758067200000" data-listing-file-modified-sort="1758399044061" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="860">
-<div class="thumbnail"><a href="./posts/005_post/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/005_post/4cover.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/005_post/index.html" class="no-external">Can AI Help Building My Customized Website?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kaW5n'); return false;">Coding</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RXh0ZW5zaW9uJTIwRGV2bG9wbWVudA=='); return false;">Extension Devlopment</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2xpbmU='); return false;">Cline</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZXg='); return false;">Codex</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/005_post/index.html" class="no-external">
-<p>As a programming novice, I recently decided to try something bold: building a VS Code extension with the help of AI. I wanted to document this journey because it shows both the power and the challenges of working with AI tools when you’re not an experienced developer.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/005_post/index.html" class="no-external">
-<div class="listing-date">
-Sep 17, 2025
-</div>
-<div class="listing-author">
-Shiyang Zhang
-</div>
-</a>
+<p>I conducted the entire development process inside Visual Studio Code (VS Code), which became the central workspace for building my extension. To make this possible, I relied on an open-source coding agent called Cline. Unlike simple autocomplete tools, Cline is an agentic coding tool that integrates directly with editors like VS Code to perform complex, multi-step tasks. It can understand entire codebases, plan and implement sophisticated changes, and execute tasks by reading and editing files, running terminal commands, and even browsing the web—once you grant it permission. In other words, it functions more like a true coding collaborator than a mere assistant. In my workflow, I primarily used two large language models. The first was GPT-5 Codex, which I chose for generating the initial foundation of my project. It’s currently one of the most powerful models for coding tasks, and I trusted it to establish a strong base by producing the first version of the code. After that, I switched to GPT-5 for the following iterations and refinements. This was mainly a practical decision because GPT-5 is more cost-effective.</p>
+<section id="debugging-with-ai" class="level3">
+<h3 class="anchored" data-anchor-id="debugging-with-ai">Debugging with AI</h3>
+<p>At this stage, I ran into some roadblocks and I leaned on the AI to try to resolve them.</p>
+<blockquote class="blockquote">
+<p><em>[Insert prompt here]</em></p>
+</blockquote>
+<p>First, I asked the agent to provide me with a <strong>step-by-step file instructing me on how to install the extension in Quorum</strong>. It did exactly that, using clear natural language, and everything went smoothly—at least for the most part. Along the way, I encountered a series of smaller but very real questions.</p>
+<p>The first problem came right at the beginning: on the <strong>extension builder page in Quorum</strong>, I didn’t even know which file I was supposed to select to add my extension. I asked the agent, and it clarified that it wasn’t the <code>manifest.json</code> file itself I needed to choose—it was the entire folder containing that file.</p>
+<div style="display: flex; align-items: center; gap: 18px;">
+<img src="2.png" style="width:40%; max-height:600px; object-fit:contain;">
+<div style="flex:1;">
+<pre><code>&lt;mark&gt;Later, after completing the installation, I expected to see some elements of my extension appear on the ChatGPT website. But when I opened the page, nothing had changed. To investigate, I opened up the DevTool of the browser, which exposed the underlying code of the site. I located the elements for the input bar in the ChatGPT interface and copied them. Then I went back to the Cline with a  question: *“I should see a button from Chrome Booster here in this section, but there’s nothing. Could you help me resolve it?”*</code></pre>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="V0lYJTJDcHJvbXB0aW5nJTJDRGVzaWduJTJDV2Vic2l0ZQ==" data-listing-date-sort="1757980800000" data-listing-file-modified-sort="1758399044059" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
-<div class="thumbnail"><a href="./posts/004_post/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/004_post/4cover.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/004_post/index.html" class="no-external">Can AI Build My Customized Website in One Click? I Wish!</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('V0lY'); return false;">WIX</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">prompting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVzaWdu'); return false;">Design</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2Vic2l0ZQ=='); return false;">Website</div>
-
+<p>The AI took over from there, diagnosing the situation and proposing fixes that helped me move forward. It was almost as if the AI was reading my screen alongside me, guiding me through technical terrain I could never have navigated alone.</p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="1.png" width="35%"> <img src="2.png" width="40%"> <img src="4cover.png" width="40%"></p>
 </div>
-<div class="delink listing-description"><a href="./posts/004_post/index.html" class="no-external">
-<p>In this round of interaction with WIX, I took a step further compared to the previous one. I asked WIX to customize the website to be more personal and distinctive. Let’s see how the final result turns out.</p>
-</a></div>
+</section>
+<section id="part-2.-trying-a-different-style" class="level3">
+<h3 class="anchored" data-anchor-id="part-2.-trying-a-different-style">Part 2. Trying a Different Style</h3>
+<p>Still not satisfied, I thought, why not just switch to a completely different style — something with more existing pictures to work with? So I asked ChatGPT to help me craft a more descriptive prompt, hoping to transform the site into something with a European impressionist aesthetic.</p>
+<p>Here’s the prompt I used:</p>
+<blockquote class="blockquote">
+<p>I’m updating the design to include a classic European pattern as the background, making it more sophisticated and detailed. I’ll keep you updated on the progress.</p>
+</blockquote>
+<p>The result? Let’s just say it was “acceptable” at best, but nowhere near something I’d adopt. It looked more like an assignment turned in by a beginner in web design than a polished, professional product.</p>
+<p><img src="4cover.png" width="40%"></p>
+<p>So I decided to narrow my focus and give more specific feedback. I chose one element and asked for a precise modification with this prompt:</p>
+<blockquote class="blockquote">
+<p>The design is too basic. Add classic European pattern as the background.</p>
+</blockquote>
+<p>In theory, this should have only updated the background for that single element. But in practice, the AI modified the background of every element on the page. The first cover image looked fine, but as I scrolled further, the European patterns became denser and spread across large sections of the site. Some of the text became hard to read, and the overall impression was cluttered, mismatched, and lacking any sense of elegance.</p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="c.png" width="35%"> <img src="c2.png" width="40%"> <img src="c3.png" width="40%"></p>
 </div>
-<div class="metadata">
-<a href="./posts/004_post/index.html" class="no-external">
-<div class="listing-date">
-Sep 16, 2025
-</div>
-<div class="listing-author">
-Shiyang Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="QUklMkNwcm9tcHRpbmclMkNEZXNpZ24lMkNXZWJzaXRl" data-listing-date-sort="1757808000000" data-listing-file-modified-sort="1758399043933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="574">
-<div class="thumbnail"><a href="./posts/003_post/index.html" class="no-external">
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>That was the moment I realized the limitations of this so-called AI website generator. It can meet basic, low-level demands, but if you’re aiming for a truly sophisticated, design-driven website, this tool simply isn’t capable of delivering.</p>
+<p>So in the end, I felt like I had been a little misled by that YouTube ad. But soon after, I discovered that this tool also allows you to build a personal website by directly editing an existing template. That gave me a new idea: instead of relying on the “one-click” generator, I could start with a ready-made template that already looked polished and well-designed, and then customize it. To make the site richer, I also plan to bring in images and music generated by other AI tools. I’ll share the details of this process in my upcoming blog posts.</p>
 
-<img loading="lazy" src="./posts/003_post/cover.jpg" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/003_post/index.html" class="no-external">Can AI Build My Website in One Click? Seems Like It Can!</a>
-</h3>
-<div class="listing-categories">
+</section>
 
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">prompting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGVzaWdu'); return false;">Design</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('V2Vic2l0ZQ=='); return false;">Website</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/003_post/index.html" class="no-external">
-<p>While watching a course video on YouTube, I came across an ad claiming that Wix could turn text into a fully designed website. The idea sounded amazing — all I had to do was describe the kind of site I wanted, and AI would instantly generate a polished, professional-looking webpage. Curious and intrigued, I decided to give it a try.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/003_post/index.html" class="no-external">
-<div class="listing-date">
-Sep 14, 2025
-</div>
-<div class="listing-author">
-Shiyang Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="Q2hhdEdQVCUyQ3Byb21wdGluZyUyQ3BsYW5uaW5n" data-listing-date-sort="1757635200000" data-listing-file-modified-sort="1758399043863" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2722">
-<div class="thumbnail"><a href="./posts/001_post/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/001_post/cover.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/001_post/index.html" class="no-external">AI Meets Magic: A Swiftie’s Guide to Filming in Disney</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q2hhdEdQVA=='); return false;">ChatGPT</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">prompting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGxhbm5pbmc='); return false;">planning</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/001_post/index.html" class="no-external">
-<p>In this post, I share how I used ChatGPT to design a detailed shooting script for a Taylor Swift–inspired mini music video at Disney World. From outfits and props to scene locations and camera angles, the process shows how AI can turn a creative idea into a step-by-step plan.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/001_post/index.html" class="no-external">
-<div class="listing-date">
-Sep 12, 2025
-</div>
-<div class="listing-author">
-Shiyang Zhang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TExNcyUyQ3Byb21wdGluZyUyQ2xvZ2lj" data-listing-date-sort="1757635200000" data-listing-file-modified-sort="1758399043867" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1601">
-<div class="thumbnail"><a href="./posts/002_post/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/002_post/Me.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/002_post/index.html" class="no-external">Who do you think I am – A self-introduction drafted by ChatGPT</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">LLMs</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">prompting</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bG9naWM='); return false;">logic</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/002_post/index.html" class="no-external">
-<p>I have interacted with ChatGPT since it was brought to the market. I usually chat with it about academic projects, searching for ideas, evaluations, suggestions, and refinements. Other time, I seek help from it concerning any questions I encounter in daily life. This time, instead of asking questions, I prompted ChatGPT to describe the ME in its eyes, both in text and in picture. Let’s see what it would say.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/002_post/index.html" class="no-external">
-<div class="listing-date">
-Sep 12, 2025
-</div>
-<div class="listing-author">
-Shiyang Zhang
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
