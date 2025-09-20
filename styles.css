@@ -1,1 +1,17 @@
 /* css styles */
+
+/* Tighten spacing between image 2.png and its adjacent text block in the flex row */
+div[style*="display: flex"][style*="gap: 18px"] {
+  gap: 8px !important; /* reduce default 18px to bring text closer to the image */
+}
+
+/* Ensure the image and highlighted text don’t add extra spacing */
+div[style*="display: flex"][style*="gap: 18px"] > img[src$="2.png"] {
+  margin: 0; /* remove any accidental margins */
+}
+div[style*="display: flex"][style*="gap: 18px"] mark {
+  margin: 0;
+  padding: 0.1em 0.2em; /* keep highlight subtle without adding large spacing */
+  background-color: #F3E8FF; /* light purple background */
+  border-radius: 4px;
+}
