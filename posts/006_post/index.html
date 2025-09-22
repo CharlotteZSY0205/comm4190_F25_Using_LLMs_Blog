@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Shiyang Zhang">
-<meta name="dcterms.date" content="2025-09-17">
-<meta name="description" content="As a programming novice, I recently decided to try something bold: building a VS Code extension with the help of AI. I wanted to document this journey because it shows both the power and the challenges of working with AI tools when you’re not an experienced developer.">
+<meta name="dcterms.date" content="2025-09-18">
+<meta name="description" content="Fixing bugs, refining the interface, and learning how to “talk to AI” so it gives me the exact code I need.">
 
-<title>Can AI Help Building My Customized Website? – Shiyang’s Explorations with LLMs</title>
+<title>Two Days, One Extension: How I Build My First Extension With Cline (Part 2) – Shiyang’s Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -155,10 +120,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Can AI Help Building My Customized Website?</h1>
+      <h1 class="title">Two Days, One Extension: How I Build My First Extension With Cline (Part 2)</h1>
                   <div>
         <div class="description">
-          As a programming novice, I recently decided to try something bold: building a VS Code extension with the help of AI. I wanted to document this journey because it shows both the power and the challenges of working with AI tools when you’re not an experienced developer.
+          Fixing bugs, refining the interface, and learning how to “talk to AI” so it gives me the exact code I need.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -183,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 17, 2025</p>
+        <p class="date">September 18, 2025</p>
       </div>
     </div>
     
@@ -202,176 +167,173 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="the-initial-idea" class="level3">
-<h3 class="anchored" data-anchor-id="the-initial-idea">The Initial Idea</h3>
-<p>I have a specific idea of what the extension should be like. I described to ChatGPT what I had in mind: the target users, the workflow, and the main functions. Instead of asking for code right away, I requested a detailed, code-free design document. This gave me a clear blueprint of what the extension should do.</p>
+<section id="my-debugging-workflow-me-to-describe-chatgpt-to-refine-cline-to-write-code" class="level2">
+<h2 class="anchored" data-anchor-id="my-debugging-workflow-me-to-describe-chatgpt-to-refine-cline-to-write-code">My Debugging Workflow: Me to describe → ChatGPT to refine → Cline to write code</h2>
+<ol type="1">
+<li><p><strong>Self-Testing and Recording</strong> I begin by testing the plugin myself in real scenarios. I record the exact steps where issues occur, note the expected vs.&nbsp;actual behavior, and keep screenshots or short recordings when necessary. I also make a quick verbal note of the effect I want, including non-functional aspects such as consistency, accessibility, and performance.</p></li>
+<li><p><strong>Turning Verbal Notes into Structured Specifications</strong> I then describe the issue informally to ChatGPT. Its role is to reorganize my raw, messy descriptions into a clear, logically structured specification: defining the problem, reproducing steps, acceptance criteria, edge cases, and the intended fix. The idea is to turn “natural language frustration” into “an actionable task.”</p></li>
+<li><p><strong>Passing Structured Specs to the Client/Agent</strong> Once ChatGPT produces a polished specification, I copy this into the client side for actual modification. When UI or interaction is involved, I emphasize that the flow and design guidelines must be aligned before touching the code.</p></li>
+<li><p><strong>Re-Testing and Regression</strong> After the client makes changes, I test again using the acceptance criteria. I check both normal and edge cases (empty inputs, switching modes, collapse/expand, keyboard focus). If regressions appear, I loop back: describe verbally, get ChatGPT to rewrite as a precise patch spec, and resubmit.</p></li>
+</ol>
+<p>This workflow can be told in a three-part rhythm in the blog: ****. I raise the issue, ChatGPT turns it into a professional spec, and the code gets updated. Each cycle can be illustrated with a screenshot or before/after comparison.</p>
+<blockquote class="blockquote">
+<p>Since I didn’t take a screenshot every time I discovered and resolved a bug, I’ll instead include a selection of screenshots showing different stages of the extension’s development, where you can see both some of the bugs and their resolved versions</p>
+</blockquote>
 </section>
-<section id="bringing-in-cline" class="level3">
-<h3 class="anchored" data-anchor-id="bringing-in-cline">Bringing in Cline</h3>
-<p>I conducted the entire development process inside Visual Studio Code (VS Code), which became the central workspace for building my extension. To make this possible, I relied on an open-source coding agent called Cline. Unlike simple autocomplete tools, Cline is an agentic coding tool that integrates directly with editors like VS Code to perform complex, multi-step tasks. It can understand entire codebases, plan and implement sophisticated changes, and execute tasks by reading and editing files, running terminal commands, and even browsing the web—once you grant it permission. In other words, it functions more like a true coding collaborator than a mere assistant.</p>
+<section id="bug-narratives-and-interaction-with-chatgpt" class="level2">
+<h2 class="anchored" data-anchor-id="bug-narratives-and-interaction-with-chatgpt">Bug Narratives and Interaction with ChatGPT</h2>
+<section id="bug-a-comparison-panel-not-fully-collapsing-triangle-indicator-misaligned" class="level3">
+<h3 class="anchored" data-anchor-id="bug-a-comparison-panel-not-fully-collapsing-triangle-indicator-misaligned">Bug A: Comparison Panel Not Fully Collapsing, Triangle Indicator Misaligned</h3>
+<p><strong>Where I Noticed It</strong> When I collapsed the comparison panel, the “UseOriginal” and “UseBoosted” buttons were still visible. Above the small triangle, there was also a stray line. The triangle itself was misaligned and undersized.</p>
+<p><strong>My Verbal Request</strong> I wanted the panel to collapse completely, leaving only a small triangle as a handle to expand again. The stray line should disappear. The triangle needed to be positioned slightly higher, made larger, rounded at the corners, colored consistently with the “UseBoosted” button, and given a subtle shadow.</p>
+<p><strong>ChatGPT’s Reorganized Specification</strong></p>
+<ul>
+<li><p>Problem: Collapsed state not hiding content, stray visual elements, misaligned and inconsistent triangle.</p></li>
+<li><p>Goal: Collapsed view shows only a clickable triangle handle, everything else hidden. Expanding restores previous state and scroll position.</p></li>
+<li><p>Acceptance Criteria:</p>
+<ol type="1">
+<li>Only the triangle is visible when collapsed; other elements are fully hidden and inaccessible.</li>
+<li>Triangle has rounded corners, sits slightly above the input box, and is proportionally larger.</li>
+<li>Its color matches the “UseBoosted” button and it has a subtle shadow.</li>
+<li>Expanding restores content unchanged.</li>
+</ol></li>
+</ul>
+<p><strong>Outcome and Reflection</strong> This change improved both accessibility and user experience. The panel is now truly collapsible, while state persistence ensures the comparison process is not disrupted.</p>
 <div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
-<p><img src="cline.png" width="40%"> <img src="model.png" width="15%"></p>
+<p><img src="v1 .png" width="30%"> <img src="v2.png" width="20%"> <img src="v3.png" width="30%"></p>
 </div>
-<p>In my workflow, I primarily used two large language models. The first was GPT-5 Codex, which I chose for generating the initial foundation of my project. It’s currently one of the most powerful models for coding tasks, and I trusted it to establish a strong base by producing the first version of the code. After that, I switched to GPT-5 for the following iterations and refinements. This was mainly a practical decision because GPT-5 is more cost-effective.</p>
-<p>I fed them the document and asked them to generate the base code. Codex went all out—it wrote nearly a thousand lines of code and produced several files that I honestly couldn’t make sense of at first.</p>
-<p><img src="initial.png" width="40%"></p>
-<p>So I asked the agent to provide me with a <strong>step-by-step file instructing me on how to install the extension in Chrome</strong>. It did exactly that, using clear natural language:</p>
 </section>
-<section id="promptbooster-extension-installation-guide" class="level1 light-purple-box">
-<h1>PromptBooster Extension Installation Guide</h1>
-<p>This guide will walk you through installing the <strong>PromptBooster</strong> browser extension step by step.<br>
-The extension works on <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, and other <strong>Chromium-based browsers</strong>.<br>
-If you’re new to browser extensions, don’t worry—this is straightforward!</p>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<section id="bug-b-button-inconsistencies-clear-edit-delete" class="level3">
+<h3 class="anchored" data-anchor-id="bug-b-button-inconsistencies-clear-edit-delete">Bug B: Button Inconsistencies (Clear, Edit, Delete)</h3>
+<p><strong>Where I Noticed It</strong> The “Clear” button looked different from other buttons. In the Settings page, buttons for editing, deleting, and adding prompts had visible borders that clashed with the rest of the design.</p>
+<p><strong>My Verbal Request</strong> I wanted the “Clear” button to look consistent with other buttons, and for all Settings page action buttons to have no border lines.</p>
+<p><strong>ChatGPT’s Reorganized Specification</strong></p>
 <ul>
-<li>A computer with Google Chrome or another Chromium-based browser (like Edge or Brave) installed.<br>
-</li>
-<li>Basic familiarity with your operating system (e.g., how to open folders and run commands).<br>
-</li>
-<li><em>(Optional)</em> <strong>Node.js</strong> installed on your system if you need to build the extension from source. You can download it from <a href="https://nodejs.org">nodejs.org</a> if it’s not already installed.</li>
+<li>Problem: Inconsistent button design language.</li>
+<li>Goal: Unify button system (size, corner radius, font, spacing). Action buttons should use a borderless style.</li>
+<li>Guidelines: Border: Same color/transparent as the background, visually appearing borderless (border: 1px solid transparent) to avoid a darker outline. Idle State:</li>
+<li>Background: Neutral color (e.g., #F5F5F7 or system light gray), transparent border.</li>
+<li>Font: Medium contrast.</li>
+<li>Hover: Subtle shadow or light elevation, no border color change. Active State:</li>
+<li>Background: Light fill of brand color (e.g., –brand-50), border remains transparent.</li>
+<li>Font/Icon: Darker tone of the brand color (e.g., –brand-700).</li>
+<li>Optional: Inner glow or subtle highlight instead of a visible border. Disabled State:</li>
+<li>Faded background, reduced text opacity.</li>
+<li>Used only in rare cases such as “in processing” or “switching not allowed.”</li>
 </ul>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> If you’re installing a pre-built version, you don’t need Node.js. Check if the repository has a built version.<br>
-If no <code>dist</code> folder is visible, you may need to build.</p>
-</blockquote>
+<p><strong>Outcome and Reflection</strong> A consistent button system reduced visual noise and made interactions easier to understand at a glance.</p>
 </section>
-<section id="step-1-download-the-extension-code" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-download-the-extension-code">Step 1: Download the Extension Code</h2>
-<ol type="1">
-<li>Go to the GitHub repository: <a href="https://github.com/CharlotteZSY0205/PromptBooster">PromptBooster</a>.<br>
-</li>
-<li>Click the green <strong>Code</strong> button.<br>
-</li>
-<li>Select <strong>Download ZIP</strong> to download the source code.<br>
-</li>
-<li>Unzip the file to a folder on your computer (e.g., Desktop or Documents). This folder will be your extension’s root directory.</li>
-</ol>
-<p><strong>Alternatively, with Git installed:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CharlotteZSY0205/PromptBooster.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> PromptBooster</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="step-2-optional-build-the-extension" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-optional-build-the-extension">Step 2: (Optional) Build the Extension</h2>
-<p>If there’s no <code>dist</code> or <code>build</code> folder in the unzipped/cloned directory, or you see source files like <code>.js</code> in <code>src/</code>, build as follows:</p>
-<ol type="1">
-<li><p>Open a terminal/command prompt.</p></li>
-<li><p>Navigate to the extension’s root folder (where <code>package.json</code> is located):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/PromptBooster</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Install dependencies:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Build the extension:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-</ol>
-<blockquote class="blockquote">
-<p><strong>Tip for novices:</strong> If you see an error, try skipping to Step 3. Many extensions don’t need building.</p>
-</blockquote>
-</section>
-<section id="step-3-load-the-extension-into-your-browser" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-load-the-extension-into-your-browser">Step 3: Load the Extension into Your Browser</h2>
-<section id="google-chrome" class="level3">
-<h3 class="anchored" data-anchor-id="google-chrome">Google Chrome</h3>
-<ol type="1">
-<li><p>Open Chrome.</p></li>
-<li><p>Go to <code>chrome://extensions/</code>.</p></li>
-<li><p>Enable <strong>Developer mode</strong> (top-right corner).</p></li>
-<li><p>Click <strong>Load unpacked</strong>.</p></li>
-<li><p>Select the extension’s root folder (must contain <code>manifest.json</code>).</p>
+<section id="bug-c-my-prompts-text-and-add-button-layout" class="level3">
+<h3 class="anchored" data-anchor-id="bug-c-my-prompts-text-and-add-button-layout">Bug C: My Prompts Text and Add Button Layout</h3>
+<p><strong>Where I Noticed It</strong> The My Prompts section displayed too many explanatory lines, and the “Add” button’s position conflicted with the title.</p>
+<p><strong>My Verbal Request</strong> I wanted to keep only the line: <em>“Drag to reorder. Top 3 appear as buttons above the input.”</em> The other sentences should be removed. The “Add” button should move to the top-right corner of the prompt items container, slightly above the list, and not aligned with the section title. Its style should match the “Save Connection” button, and it should have a background color even when idle.</p>
+<p><strong>ChatGPT’s Reorganized Specification</strong></p>
 <ul>
-<li>If you built it: select the <code>dist</code> or <code>build</code> folder.</li>
-</ul></li>
-</ol>
-</section>
-<section id="microsoft-edge" class="level3">
-<h3 class="anchored" data-anchor-id="microsoft-edge">Microsoft Edge</h3>
+<li><p>Goal: Simplify helper text and reposition “Add” for clarity.</p></li>
+<li><p>Acceptance Criteria:</p>
 <ol type="1">
-<li>Open Edge.</li>
-<li>Go to <code>edge://extensions/</code>.</li>
-<li>Enable <strong>Developer mode</strong> (bottom-left corner).</li>
-<li>Click <strong>Load unpacked</strong>.</li>
-<li>Select the extension’s root folder.</li>
-</ol>
-</section>
-<section id="firefox" class="level3">
-<h3 class="anchored" data-anchor-id="firefox">Firefox</h3>
-<p>⚠️ The extension is designed for Chromium-based browsers. Using it in Firefox requires conversion, which is more advanced. If you’re a beginner, use Chrome or Edge instead.</p>
-</section>
-</section>
-<section id="step-4-configure-the-extension" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-configure-the-extension">Step 4: Configure the Extension</h2>
-<ol type="1">
-<li><p>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</p></li>
-<li><p>Find <strong>PromptBooster</strong> → click <strong>Details</strong> → <strong>Extension options</strong>.</p></li>
-<li><p>Configure:</p>
-<ul>
-<li><strong>API Key</strong>: Paste your OpenAI-compatible API key.</li>
-<li><strong>API Endpoint URL</strong>: Default values are usually fine.</li>
-<li><strong>Model</strong>: e.g., GPT-4.</li>
-<li><strong>Default Mode</strong>: Recommended: <em>Learning Mode</em>.</li>
-<li><strong>Preview Option</strong>: Enable if you want to review rewritten prompts before sending.</li>
-</ul></li>
-</ol>
-<blockquote class="blockquote">
-<p><strong>Tip:</strong> Get an API key from <a href="https://platform.openai.com/">OpenAI</a> if you don’t already have one.</p>
-</blockquote>
-</section>
-<section id="step-5-test-the-extension" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-test-the-extension">Step 5: Test the Extension</h2>
-<ol type="1">
-<li><p>Go to <a href="https://chat.openai.com">ChatGPT</a> (or another supported chatbot).</p></li>
-<li><p>Log in.</p></li>
-<li><p>Type a prompt, e.g., <code>Tell me about dogs.</code></p></li>
-<li><p>You should see a <strong>Boost Prompt</strong> button next to <strong>Send</strong>.</p></li>
-<li><p>Click <strong>Boost Prompt</strong>.</p>
-<ul>
-<li>If preview is enabled, you’ll see the rewritten prompt first.</li>
-</ul></li>
-<li><p>In the chat history, you’ll see both your original and boosted prompts.</p></li>
-</ol>
-</section>
-<section id="troubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
-<ul>
-<li><strong>Extension not loading?</strong> Make sure you selected the correct folder (must contain <code>manifest.json</code>).</li>
-<li><strong>API errors?</strong> Double-check your API key, endpoint, and model.</li>
-<li><strong>Button not showing?</strong> Refresh the page and make sure you’re on <code>chat.openai.com</code>.</li>
-<li><strong>Build failed?</strong> Skip building and load the source directly.</li>
-<li><strong>Permission issues?</strong> Grant storage and active tab permissions when prompted.</li>
+<li>Only the concise helper text remains.</li>
+<li>“Add” button is visually aligned with the prompt list container, not the header.</li>
+<li>“Add” button design matches “Save Connection” and has a default background color.</li>
+</ol></li>
 </ul>
+<p><strong>Outcome and Reflection</strong> The section is cleaner and the Add button’s placement now clearly signals its scope of action.</p>
+<div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
+<p><img src="b1.png" width="30%"> <img src="b2.png" width="20%"> <img src="b3.png" width="30%"></p>
+</div>
 </section>
-<section id="whats-next" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
+<section id="bug-d-remove-default-optimization-style-from-settings-persist-active-mode-via-header-buttons" class="level3">
+<h3 class="anchored" data-anchor-id="bug-d-remove-default-optimization-style-from-settings-persist-active-mode-via-header-buttons">Bug D: Remove “Default Optimization Style” from Settings &amp; Persist Active Mode via Header Buttons</h3>
+<p><strong>Where I Noticed It</strong> The Settings page still has a “default optimization style” option, which causes confusion because the active mode should really be set from the header buttons in the chat interface.</p>
+<p><strong>My Verbal Request</strong> I want to remove the “default optimization style” from Settings completely, and instead let users select and persist their active mode by clicking the header buttons.</p>
+<p><strong>ChatGPT’s Reorganized Specification</strong></p>
+<ol start="2" type="1">
+<li>Remove “default optimization style” from Settings; persist active mode via header buttons</li>
+</ol>
+<p><strong>Problem</strong> Currently there is a “default optimization style” in Settings. You want to remove that, and instead let the user set their “default” (active) mode by clicking one of the three header buttons above the input box. Once selected, that mode stays active and applies to subsequent messages until the user switches to another mode (or clears it).</p>
+<p><strong>Requirements</strong></p>
+<p><em>No default in Settings</em></p>
 <ul>
-<li>Explore different modes in settings: <em>Learning Mode</em>, <em>Structured Mode</em>, etc.</li>
-<li>Refer to the repository’s <code>README.md</code> for advanced features.</li>
-<li>If you encounter issues, check the <a href="https://github.com/CharlotteZSY0205/PromptBooster">GitHub repository</a> for updates.</li>
+<li>Remove the “default optimization style” field/option from Settings entirely.</li>
+<li>Settings only manages items (Replace/Append), their content, and their order. The active mode is not chosen in Settings.</li>
 </ul>
-<p><strong>Happy prompting! 🚀</strong></p>
-<pre><code>
-&lt;/div&gt;
-
-
-&lt;div style="display: flex; align-items: center; gap: 18px;"&gt;
-  &lt;img src="2.png" style="width:40%; max-height:600px; object-fit:contain;"/&gt;
-  &lt;div style="flex:1;"&gt;
-    &lt;mark&gt;Later, after completing the installation, I expected to see some elements of my extension appear on the ChatGPT website. But when I opened the page, nothing had changed. To investigate, I opened up the DevTool of the browser, which exposed the underlying code of the site. I located the elements for the input bar in the ChatGPT interface and copied them. Then I went back to the Cline with a  question: *“I should see a button from Chrome Booster here in this section, but there’s nothing. Could you help me resolve it?”*
-  &lt;/div&gt;
-&lt;/div&gt;
-
-### Takeaways
-First, collaborating with AI to develop an extension or software is ideal for multitasking. Since AI needs time to process requirements, analyze the code, and propose the best strategy, I can use that waiting period to tackle other tasks. For example, while developing this extension, I also worked on writing this blog about the process. This not only saved time but also helped me preserve a fresh memory of the entire workflow.
-
-Second, even though AI is capable of debugging, we still need to stay flexible and adapt to the current status of the code. Sometimes, when AI fails to achieve a goal after several attempts, it’s necessary to explore alternative solutions. For instance, I found it useful to ask AI to generate logs and then feed those logs back into the system. This gave AI a clearer picture of what had been accomplished and what went wrong. In other words, we cannot simply expect AI to finish the task on its own — we have to think critically and provide multiple options or strategies to guide it.
-
-Third, it’s important to remember to push the code once it reaches a satisfying state. If you move on to the next iteration and AI makes major changes that worsen the outcome, you’ll want to revert to the earlier version. That’s only possible if you’ve pushed it beforehand. As a bonus tip, if you’re unhappy with the current version, you can use git stash to temporarily save it in a separate place. That way, you can easily return to the most recent pushed version whenever needed.
-
-
-
-
-</code></pre>
-
-
+<p><em>Active mode is chosen in the chat header (three buttons)</em></p>
+<ul>
+<li><p>Clicking any header button sets that item as the active mode.</p></li>
+<li><p>The active mode remains in effect across attempts (i.e., across consecutive sends) until:</p>
+<ul>
+<li>The user clicks a different header button (which switches the active mode), or</li>
+<li>The user clicks a Clear control (see below), or</li>
+<li>The active item is deleted/disabled in Settings (auto-clears).</li>
+</ul></li>
+</ul>
+<p><strong>Outcome and Reflection</strong> This change simplifies Settings, removes redundancy, and makes the active mode behavior clearer and more consistent for users.</p>
 </section>
+<section id="bug-e-enter-key-behavior-interaction-logic" class="level3">
+<h3 class="anchored" data-anchor-id="bug-e-enter-key-behavior-interaction-logic">Bug E: Enter Key Behavior &amp; Interaction Logic</h3>
+<p><strong>Where I Noticed It</strong> The current system doesn’t fully respect the active mode when pressing Enter, and the role of the mode buttons is slightly unclear.</p>
+<p><strong>My Verbal Request</strong> I want pressing Enter to automatically respect whichever mode is active, and the header buttons to be able to toggle off. The three mode buttons should only act as selectors, never sending anything themselves.</p>
+<p><strong>ChatGPT’s Reorganized Specification</strong></p>
+<ol start="3" type="1">
+<li>Enter key respects active mode; header button toggles to clear Requirement</li>
+</ol>
+<ul>
+<li>When any of the three header modes is selected (active), pressing Enter in the chat input must send the boosted prompt (Append = append then send; Replace = replace then send).</li>
+<li>Pressing the selected header button again toggles it off (clears active mode). When no mode is active, pressing Enter sends the original prompt (unaltered).</li>
+</ul>
+<ol type="1">
+<li>Interaction Logic (updated) Button Role The three mode buttons (e.g., A / B / C) only select/deselect a mode; they never send. Whatever user type in the input box, if one mode is selected, the input will be modified according to the mode.</li>
+</ol>
+<p>Workflow</p>
+<ol type="1">
+<li>The user selects a mode (or clicks the same button again to cancel → returns to “unselected”).</li>
+<li>The user finishes typing the prompt.</li>
+<li>The user clicks Boost Prompt.</li>
+<li>The system rewrites the prompt based on the selected mode → inserts the rewrite into the input field or replaces the existing content (per your replace/append setting), without auto-sending.</li>
+<li>The user reviews and sends manually.</li>
+</ol>
+<p>Selection Rules (single-select, cancelable)</p>
+<ul>
+<li>Click an unselected button → it becomes selected; others are deselected.</li>
+<li>Click the selected button again → deselect and enter “no mode.”</li>
+</ul>
+<p>Additional Rules</p>
+<ul>
+<li>Append mode: never auto-sends.</li>
+<li>Boosted Prompt mode: never auto-sends and must preserve the comparison panel (before vs.&nbsp;after) previously designed. Do not remove that panel.</li>
+</ul>
+<p><strong>Outcome and Reflection</strong> This ensures consistency: pressing Enter follows the currently active mode, but users can clear modes by toggling buttons. It also clarifies that mode buttons are selectors only, preserving manual control over sending.</p>
+<div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
+<p><img src="c1.png" width="30%"> <img src="c2.png" width="20%"> <img src="c3.png" width="30%"></p>
+</div>
+</section>
+<section id="bug-f-prompt-item-borders-and-font-weight" class="level3">
+<h3 class="anchored" data-anchor-id="bug-f-prompt-item-borders-and-font-weight">Bug F: Prompt Item Borders and Font Weight</h3>
+<p><strong>Where I Noticed It</strong> Each prompt item (like Emoji, Creative, Translation) had light borders, which made the layout look cluttered. The Edit and Delete labels were also slightly oversized.</p>
+<p><strong>My Verbal Request</strong> I wanted to remove the borders, reduce the font size of Edit and Delete slightly, and keep the Add button with a background even in its idle state.</p>
+<p><strong>ChatGPT’s Reorganized Specification</strong></p>
+<ul>
+<li><p>Goal: Remove unnecessary card borders, rely on spacing to separate items, and adjust typography for action labels.</p></li>
+<li><p>Acceptance Criteria:</p>
+<ol type="1">
+<li>No visible borders around prompt items; spacing and padding define structure.</li>
+<li>Edit/Delete labels use a slightly smaller font size.</li>
+<li>Add button retains a default background.</li>
+</ol></li>
+</ul>
+<p><strong>Outcome and Reflection</strong> The result is a cleaner, more modern look. The list feels lighter and more professional, while action labels no longer dominate visually.</p>
+</section>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<p>First, collaborating with AI to develop an extension or software is ideal for multitasking. Since AI needs time to process requirements, analyze the code, and propose the best strategy, I can use that waiting period to focus on other tasks. For example, while developing this extension, I also worked on writing a blog about the process. This not only saved time but also helped me keep a fresh memory of the entire workflow.</p>
+<p>Second, it’s important to remember to push the code once it reaches a satisfactory state. If you move on to the next iteration and AI introduces major changes that worsen the outcome, you’ll want to revert to the earlier version — which is only possible if you’ve pushed it beforehand. As a bonus tip, if you’re unhappy with the current version, you can use git stash to temporarily save it in a separate place. That way, you can easily return to the most recent pushed version whenever needed.</p>
+<p>Third, even though AI is capable of debugging, we still need to remain flexible and adapt to the current status of the code. Sometimes, when AI fails to achieve a goal after several attempts, it becomes necessary to explore alternative solutions. For instance, I found it useful to ask AI to generate logs and then feed those logs back into the system. This gave AI a clearer understanding of what had been accomplished and what went wrong. In other words, we cannot simply expect AI to finish the task on its own — we have to think critically and provide multiple options or strategies to guide it.</p>
+<p>Finally, although describing bugs and formulating a well-structured request for ChatGPT can make inputs more organized, I noticed that sometimes a plain and simple description written directly by me led to more effective debugging. I suspect this is because ChatGPT’s reorganized versions can be overly long or mundane, adding unnecessary noise for both the model and the client to process. In these cases, relying on my own straightforward explanation worked better than depending on ChatGPT’s reformulations.</p>
+<p>Throughout the creation, I found that whether it was drafting the design document or writing the code, I found that the AI considered all the essential aspects of building an extension. It even anticipated how users would navigate the extension and added many features and options beyond my original requirements, which I found quite amazing. For example, I never gave any instructions on the visual design, but GPT-5 automatically chose a sleek purple theme with gradient effects and designed the button styles and the settings page layout. I hardly made any changes to this style because it was already more than satisfactory. Later, when I asked GPT-5 to refine the design by removing the button border, it provided a detailed color specification covering three states: unselected, hover, and selected. This level of comprehensiveness went far beyond my expectations, since I wouldn’t have thought to account for all those conditions. In terms of functionality, the AI also created features I hadn’t considered, such as an API input bar and an option allowing users to preview the modified prompt before sending it. What impressed me most was that I didn’t need to specify every detail — with only simple descriptions from me, the AI was able to design thoughtful features and interfaces on its own.</p>
+<p>````</p>
+
+
 </section>
 
 </main> <!-- /main -->
