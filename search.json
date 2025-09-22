@@ -168,64 +168,64 @@
     "text": "Florida!!! MV created by me\nI filmed this short video at Disney World in Orlando last November. Check it out and see whether my idea or the AI’s version feels more interesting to you."
   },
   {
-    "objectID": "posts/005_post copy/index.html",
-    "href": "posts/005_post copy/index.html",
+    "objectID": "posts/006_post/index.html",
+    "href": "posts/006_post/index.html",
     "title": "Can AI Help Building My Customized Website?",
     "section": "",
     "text": "I have a specific idea of what the extension should be like. I described to ChatGPT what I had in mind: the target users, the workflow, and the main functions. Instead of asking for code right away, I requested a detailed, code-free design document. This gave me a clear blueprint of what the extension should do."
   },
   {
-    "objectID": "posts/005_post copy/index.html#prerequisites",
-    "href": "posts/005_post copy/index.html#prerequisites",
+    "objectID": "posts/006_post/index.html#prerequisites",
+    "href": "posts/006_post/index.html#prerequisites",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Prerequisites",
     "text": "Prerequisites\n\nA computer with Google Chrome or another Chromium-based browser (like Edge or Brave) installed.\n\nBasic familiarity with your operating system (e.g., how to open folders and run commands).\n\n(Optional) Node.js installed on your system if you need to build the extension from source. You can download it from nodejs.org if it’s not already installed.\n\n\nNote: If you’re installing a pre-built version, you don’t need Node.js. Check if the repository has a built version.\nIf no dist folder is visible, you may need to build."
   },
   {
-    "objectID": "posts/005_post copy/index.html#step-1-download-the-extension-code",
-    "href": "posts/005_post copy/index.html#step-1-download-the-extension-code",
+    "objectID": "posts/006_post/index.html#step-1-download-the-extension-code",
+    "href": "posts/006_post/index.html#step-1-download-the-extension-code",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Step 1: Download the Extension Code",
     "text": "Step 1: Download the Extension Code\n\nGo to the GitHub repository: PromptBooster.\n\nClick the green Code button.\n\nSelect Download ZIP to download the source code.\n\nUnzip the file to a folder on your computer (e.g., Desktop or Documents). This folder will be your extension’s root directory.\n\nAlternatively, with Git installed:\ngit clone https://github.com/CharlotteZSY0205/PromptBooster.git\ncd PromptBooster"
   },
   {
-    "objectID": "posts/005_post copy/index.html#step-2-optional-build-the-extension",
-    "href": "posts/005_post copy/index.html#step-2-optional-build-the-extension",
+    "objectID": "posts/006_post/index.html#step-2-optional-build-the-extension",
+    "href": "posts/006_post/index.html#step-2-optional-build-the-extension",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Step 2: (Optional) Build the Extension",
     "text": "Step 2: (Optional) Build the Extension\nIf there’s no dist or build folder in the unzipped/cloned directory, or you see source files like .js in src/, build as follows:\n\nOpen a terminal/command prompt.\nNavigate to the extension’s root folder (where package.json is located):\ncd Desktop/PromptBooster\nInstall dependencies:\nnpm install\nBuild the extension:\nnpm run build\n\n\nTip for novices: If you see an error, try skipping to Step 3. Many extensions don’t need building."
   },
   {
-    "objectID": "posts/005_post copy/index.html#step-3-load-the-extension-into-your-browser",
-    "href": "posts/005_post copy/index.html#step-3-load-the-extension-into-your-browser",
+    "objectID": "posts/006_post/index.html#step-3-load-the-extension-into-your-browser",
+    "href": "posts/006_post/index.html#step-3-load-the-extension-into-your-browser",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Step 3: Load the Extension into Your Browser",
     "text": "Step 3: Load the Extension into Your Browser\n\nGoogle Chrome\n\nOpen Chrome.\nGo to chrome://extensions/.\nEnable Developer mode (top-right corner).\nClick Load unpacked.\nSelect the extension’s root folder (must contain manifest.json).\n\nIf you built it: select the dist or build folder.\n\n\n\n\nMicrosoft Edge\n\nOpen Edge.\nGo to edge://extensions/.\nEnable Developer mode (bottom-left corner).\nClick Load unpacked.\nSelect the extension’s root folder.\n\n\n\nFirefox\n⚠️ The extension is designed for Chromium-based browsers. Using it in Firefox requires conversion, which is more advanced. If you’re a beginner, use Chrome or Edge instead."
   },
   {
-    "objectID": "posts/005_post copy/index.html#step-4-configure-the-extension",
-    "href": "posts/005_post copy/index.html#step-4-configure-the-extension",
+    "objectID": "posts/006_post/index.html#step-4-configure-the-extension",
+    "href": "posts/006_post/index.html#step-4-configure-the-extension",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Step 4: Configure the Extension",
     "text": "Step 4: Configure the Extension\n\nOpen chrome://extensions (or edge://extensions).\nFind PromptBooster → click Details → Extension options.\nConfigure:\n\nAPI Key: Paste your OpenAI-compatible API key.\nAPI Endpoint URL: Default values are usually fine.\nModel: e.g., GPT-4.\nDefault Mode: Recommended: Learning Mode.\nPreview Option: Enable if you want to review rewritten prompts before sending.\n\n\n\nTip: Get an API key from OpenAI if you don’t already have one."
   },
   {
-    "objectID": "posts/005_post copy/index.html#step-5-test-the-extension",
-    "href": "posts/005_post copy/index.html#step-5-test-the-extension",
+    "objectID": "posts/006_post/index.html#step-5-test-the-extension",
+    "href": "posts/006_post/index.html#step-5-test-the-extension",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Step 5: Test the Extension",
     "text": "Step 5: Test the Extension\n\nGo to ChatGPT (or another supported chatbot).\nLog in.\nType a prompt, e.g., Tell me about dogs.\nYou should see a Boost Prompt button next to Send.\nClick Boost Prompt.\n\nIf preview is enabled, you’ll see the rewritten prompt first.\n\nIn the chat history, you’ll see both your original and boosted prompts."
   },
   {
-    "objectID": "posts/005_post copy/index.html#troubleshooting",
-    "href": "posts/005_post copy/index.html#troubleshooting",
+    "objectID": "posts/006_post/index.html#troubleshooting",
+    "href": "posts/006_post/index.html#troubleshooting",
     "title": "Can AI Help Building My Customized Website?",
     "section": "Troubleshooting",
     "text": "Troubleshooting\n\nExtension not loading? Make sure you selected the correct folder (must contain manifest.json).\nAPI errors? Double-check your API key, endpoint, and model.\nButton not showing? Refresh the page and make sure you’re on chat.openai.com.\nBuild failed? Skip building and load the source directly.\nPermission issues? Grant storage and active tab permissions when prompted."
   },
   {
-    "objectID": "posts/005_post copy/index.html#whats-next",
-    "href": "posts/005_post copy/index.html#whats-next",
+    "objectID": "posts/006_post/index.html#whats-next",
+    "href": "posts/006_post/index.html#whats-next",
     "title": "Can AI Help Building My Customized Website?",
     "section": "What’s Next?",
     "text": "What’s Next?\n\nExplore different modes in settings: Learning Mode, Structured Mode, etc.\nRefer to the repository’s README.md for advanced features.\nIf you encounter issues, check the GitHub repository for updates.\n\nHappy prompting! 🚀\n\n&lt;/div&gt;\n\n\n&lt;div style=\"display: flex; align-items: center; gap: 18px;\"&gt;\n  &lt;img src=\"2.png\" style=\"width:40%; max-height:600px; object-fit:contain;\"/&gt;\n  &lt;div style=\"flex:1;\"&gt;\n    &lt;mark&gt;Later, after completing the installation, I expected to see some elements of my extension appear on the ChatGPT website. But when I opened the page, nothing had changed. To investigate, I opened up the DevTool of the browser, which exposed the underlying code of the site. I located the elements for the input bar in the ChatGPT interface and copied them. Then I went back to the Cline with a  question: *“I should see a button from Chrome Booster here in this section, but there’s nothing. Could you help me resolve it?”*\n  &lt;/div&gt;\n&lt;/div&gt;\n\n### Takeaways\nFirst, collaborating with AI to develop an extension or software is ideal for multitasking. Since AI needs time to process requirements, analyze the code, and propose the best strategy, I can use that waiting period to tackle other tasks. For example, while developing this extension, I also worked on writing this blog about the process. This not only saved time but also helped me preserve a fresh memory of the entire workflow.\n\nSecond, even though AI is capable of debugging, we still need to stay flexible and adapt to the current status of the code. Sometimes, when AI fails to achieve a goal after several attempts, it’s necessary to explore alternative solutions. For instance, I found it useful to ask AI to generate logs and then feed those logs back into the system. This gave AI a clearer picture of what had been accomplished and what went wrong. In other words, we cannot simply expect AI to finish the task on its own — we have to think critically and provide multiple options or strategies to guide it.\n\nThird, it’s important to remember to push the code once it reaches a satisfying state. If you move on to the next iteration and AI makes major changes that worsen the outcome, you’ll want to revert to the earlier version. That’s only possible if you’ve pushed it beforehand. As a bonus tip, if you’re unhappy with the current version, you can use git stash to temporarily save it in a separate place. That way, you can easily return to the most recent pushed version whenever needed."
