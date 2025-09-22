@@ -207,39 +207,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I have a specific idea of what the extension should be like. I described to ChatGPT what I had in mind: the target users, the workflow, and the main functions. Instead of asking for code right away, I requested a detailed, code-free design document. This gave me a clear blueprint of what the extension should do.</p>
 </section>
 <section id="bringing-in-cline" class="level3">
-<h3 class="anchored">Bringing in Cline</h3>
+<h3 class="anchored" data-anchor-id="bringing-in-cline">Bringing in Cline</h3>
 <p>I conducted the entire development process inside Visual Studio Code (VS Code), which became the central workspace for building my extension. To make this possible, I relied on an open-source coding agent called Cline. Unlike simple autocomplete tools, Cline is an agentic coding tool that integrates directly with editors like VS Code to perform complex, multi-step tasks. It can understand entire codebases, plan and implement sophisticated changes, and execute tasks by reading and editing files, running terminal commands, and even browsing the web—once you grant it permission. In other words, it functions more like a true coding collaborator than a mere assistant.</p>
 <div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
 <p><img src="cline.png" width="40%"> <img src="model.png" width="15%"></p>
 </div>
 <p>In my workflow, I primarily used two large language models. The first was GPT-5 Codex, which I chose for generating the initial foundation of my project. It’s currently one of the most powerful models for coding tasks, and I trusted it to establish a strong base by producing the first version of the code. After that, I switched to GPT-5 for the following iterations and refinements. This was mainly a practical decision because GPT-5 is more cost-effective.</p>
-<p>I fed them the document and asked them to generate the base code. Codex went all out—it wrote nearly a thousand lines of code and produced several files that I honestly couldn’t make sense of at first. So I asked the agent to provide me with a <strong>step-by-step file instructing me on how to install the extension in Chrome</strong>. It did exactly that, using clear natural language, and everything went smoothly—at least for the most part.</p>
-<div class="light-purple-box">
-<p>Here’s your guide formatted cleanly in <strong>Markdown</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># PromptBooster Extension Installation Guide</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This guide will walk you through installing the **PromptBooster** browser extension step by step.  </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>The extension works on **Google Chrome**, **Microsoft Edge**, and other **Chromium-based browsers**.  </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>If you're new to browser extensions, don't worry—this is straightforward!</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prerequisites</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A computer with Google Chrome or another Chromium-based browser (like Edge or Brave) installed.  </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Basic familiarity with your operating system (e.g., how to open folders and run commands).  </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*(Optional)* **Node.js** installed on your system if you need to build the extension from source. You can download it from <span class="co">[</span><span class="ot">nodejs.org</span><span class="co">](https://nodejs.org)</span> if it's not already installed.  </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Note:** If you're installing a pre-built version, you don't need Node.js. Check if the repository has a built version.</span>  </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; If no </span><span class="in">`dist`</span><span class="at"> folder is visible, you may need to build.</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1: Download the Extension Code</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Go to the GitHub repository: <span class="co">[</span><span class="ot">PromptBooster</span><span class="co">](https://github.com/CharlotteZSY0205/PromptBooster)</span>.  </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Click the green **Code** button.  </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Select **Download ZIP** to download the source code.  </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Unzip the file to a folder on your computer (e.g., Desktop or Documents). This folder will be your extension’s root directory.  </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**Alternatively, with Git installed:**  </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CharlotteZSY0205/PromptBooster.git</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> PromptBooster</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>I fed them the document and asked them to generate the base code. Codex went all out—it wrote nearly a thousand lines of code and produced several files that I honestly couldn’t make sense of at first.</p>
+<p><img src="initial.png" width="40%"></p>
+<p>So I asked the agent to provide me with a <strong>step-by-step file instructing me on how to install the extension in Chrome</strong>. It did exactly that, using clear natural language:</p>
+</section>
+<section id="promptbooster-extension-installation-guide" class="level1 light-purple-box">
+<h1>PromptBooster Extension Installation Guide</h1>
+<p>This guide will walk you through installing the <strong>PromptBooster</strong> browser extension step by step.<br>
+The extension works on <strong>Google Chrome</strong>, <strong>Microsoft Edge</strong>, and other <strong>Chromium-based browsers</strong>.<br>
+If you’re new to browser extensions, don’t worry—this is straightforward!</p>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<ul>
+<li>A computer with Google Chrome or another Chromium-based browser (like Edge or Brave) installed.<br>
+</li>
+<li>Basic familiarity with your operating system (e.g., how to open folders and run commands).<br>
+</li>
+<li><em>(Optional)</em> <strong>Node.js</strong> installed on your system if you need to build the extension from source. You can download it from <a href="https://nodejs.org">nodejs.org</a> if it’s not already installed.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> If you’re installing a pre-built version, you don’t need Node.js. Check if the repository has a built version.<br>
+If no <code>dist</code> folder is visible, you may need to build.</p>
+</blockquote>
+</section>
+<section id="step-1-download-the-extension-code" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-download-the-extension-code">Step 1: Download the Extension Code</h2>
+<ol type="1">
+<li>Go to the GitHub repository: <a href="https://github.com/CharlotteZSY0205/PromptBooster">PromptBooster</a>.<br>
+</li>
+<li>Click the green <strong>Code</strong> button.<br>
+</li>
+<li>Select <strong>Download ZIP</strong> to download the source code.<br>
+</li>
+<li>Unzip the file to a folder on your computer (e.g., Desktop or Documents). This folder will be your extension’s root directory.</li>
+</ol>
+<p><strong>Alternatively, with Git installed:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CharlotteZSY0205/PromptBooster.git</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> PromptBooster</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="step-2-optional-build-the-extension" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-optional-build-the-extension">Step 2: (Optional) Build the Extension</h2>
 <p>If there’s no <code>dist</code> or <code>build</code> folder in the unzipped/cloned directory, or you see source files like <code>.js</code> in <code>src/</code>, build as follows:</p>
@@ -337,7 +348,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Happy prompting! 🚀</strong></p>
 <pre><code>
-
 &lt;/div&gt;
 
 
@@ -362,7 +372,6 @@ Third, it’s important to remember to push the code once it reaches a satisfyin
 
 
 </section>
-</div>
 </section>
 
 </main> <!-- /main -->
