@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -172,7 +207,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I have a specific idea of what the extension should be like. I described to ChatGPT what I had in mind: the target users, the workflow, and the main functions. Instead of asking for code right away, I requested a detailed, code-free design document. This gave me a clear blueprint of what the extension should do.</p>
 </section>
 <section id="bringing-in-cline" class="level3">
-<h3 class="anchored" data-anchor-id="bringing-in-cline">Bringing in Cline</h3>
+<h3 class="anchored">Bringing in Cline</h3>
 <p>I conducted the entire development process inside Visual Studio Code (VS Code), which became the central workspace for building my extension. To make this possible, I relied on an open-source coding agent called Cline. Unlike simple autocomplete tools, Cline is an agentic coding tool that integrates directly with editors like VS Code to perform complex, multi-step tasks. It can understand entire codebases, plan and implement sophisticated changes, and execute tasks by reading and editing files, running terminal commands, and even browsing the web—once you grant it permission. In other words, it functions more like a true coding collaborator than a mere assistant.</p>
 <div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
 <p><img src="cline.png" width="40%"> <img src="model.png" width="15%"></p>
@@ -180,23 +215,154 @@ ul.task-list li input[type="checkbox"] {
 <p>In my workflow, I primarily used two large language models. The first was GPT-5 Codex, which I chose for generating the initial foundation of my project. It’s currently one of the most powerful models for coding tasks, and I trusted it to establish a strong base by producing the first version of the code. After that, I switched to GPT-5 for the following iterations and refinements. This was mainly a practical decision because GPT-5 is more cost-effective.</p>
 <p>I fed them the document and asked them to generate the base code. Codex went all out—it wrote nearly a thousand lines of code and produced several files that I honestly couldn’t make sense of at first. So I asked the agent to provide me with a <strong>step-by-step file instructing me on how to install the extension in Chrome</strong>. It did exactly that, using clear natural language, and everything went smoothly—at least for the most part.</p>
 <div class="light-purple-box">
-<p>PromptBooster Extension Installation Guide This guide will walk you through installing the PromptBooster browser extension step by step. This extension works on Google Chrome, Microsoft Edge, and other Chromium-based browsers. If you’re new to browser extensions, don’t worry—this is straightforward! Prerequisites * A computer with Google Chrome or another Chromium-based browser (like Edge or Brave) installed. * Basic familiarity with your operating system (e.g., how to open folders and run commands). * (Optional) Node.js installed on your system if you need to build the extension from source. You can download it from&nbsp;nodejs.org&nbsp;if it’s not already installed. Note:&nbsp;If you’re installing a pre-built version, you don’t need Node.js. Check if the repository has a built version (no&nbsp;dist&nbsp;folder visible? You may need to build). Step 1: Download the Extension Code 1. Go to the GitHub repository for PromptBooster:&nbsp;https://github.com/CharlotteZSY0205/PromptBooster. 2. Click the green “Code” button. 3. Select “Download ZIP” to download the source code as a ZIP file. 4. Unzip the downloaded file to a folder on your computer (e.g., Desktop or Documents). This folder will be your extension’s root directory. Alternatively, if you have Git installed: * Open a terminal/command prompt. * Run:&nbsp;git clone https://github.com/CharlotteZSY0205/PromptBooster.git * Navigate to the cloned folder. Step 2: (Optional) Build the Extension The extension might need to be built from source code. Check if there’s a&nbsp;dist&nbsp;or&nbsp;build&nbsp;folder in the unzipped/cloned directory. If not, or if you see source files like&nbsp;.js&nbsp;in&nbsp;src/, follow these steps: 1. Open a terminal or command prompt. 2. Navigate to the extension’s root folder (where&nbsp;package.json&nbsp;is located). * Example:&nbsp;cd Desktop/PromptBooster&nbsp;(adjust based on where you unzipped it). 3. Install dependencies (if any): * Run:&nbsp;npm install * This might take a minute. It’s setting up tools for building. 4. Build the extension: * Run:&nbsp;npm run build * This compiles the source into a ready-to-use version. If it fails, the extension might not need building—proceed to Step 3. Tip for Novices:&nbsp;If you see an error, try skipping to Step 3. Many extensions don’t need building if they’re simple injects. Step 3: Load the Extension into Your Browser For Google Chrome: 1. Open Google Chrome. 2. Type&nbsp;chrome://extensions/&nbsp;in the address bar and press Enter. 3. In the top-right corner, toggle on “Developer mode.” 4. Click the “Load unpacked” button. 5. Select the extension’s root folder (the one with&nbsp;manifest.json&nbsp;inside). If you built it, select the&nbsp;dist&nbsp;or&nbsp;build&nbsp;folder if it exists; otherwise, select the main folder. 6. The extension should now appear in your list of extensions with the name “PromptBooster.” For Microsoft Edge: 1. Open Microsoft Edge. 2. Type&nbsp;edge://extensions/&nbsp;in the address bar and press Enter. 3. In the bottom-left corner, toggle on “Developer mode.” 4. Click “Load unpacked” and select the extension’s root folder as above. 5. It should load similarly to Chrome. For Firefox: Warning:&nbsp;The extension is built for Chromium-based browsers (Chrome/Edge). For Firefox, it needs conversion to an older format, which is more advanced. If you’re a novice, consider using Chrome instead. If you must use Firefox, search for “convert Chrome extension to Firefox” or ask for help in forums. Step 4: Configure the Extension 1. After loading, find the PromptBooster extension in your extensions list (still on the&nbsp;chrome://extensions&nbsp;page). 2. Click on the “Details” button next to it. 3. Click “Extension options” to open the settings page. 4. Here, you’ll need to set up: * API Key:&nbsp;Paste your API key from an OpenAI-compatible provider (e.g., OpenAI or a service like Grok). * API Endpoint URL:&nbsp;The URL for your provider’s API (defaults are usually fine). * Model:&nbsp;Select the model you want to use for rewriting (e.g., GPT-4). * Default Mode:&nbsp;Choose your preferred mode (Learning Mode is recommended for beginners). * Preview Option:&nbsp;Toggle whether you want to see the rewritten prompt before sending it. Enable this if you’re unsure about changes. 5. Save your settings. Tip:&nbsp;Get an API key from OpenAI’s website if you don’t have one. Sign up and get one from their API section. Step 5: Test the Extension 1. Go to&nbsp;ChatGPT’s website&nbsp;(or another supported chatbot). 2. Make sure you’re logged in. 3. Type a prompt in the chat box, like: “Tell me about dogs.” 4. You should see a new “Boost Prompt” button next to the “Send” button. 5. Click “Boost Prompt” to let the extension rewrite and send an improved version. * If preview is enabled, you’ll see the rewritten prompt first and can edit or approve it. 6. In the chat history, you’ll see your original prompt (in gray) and the boosted one. Troubleshooting * Extension not loading?&nbsp;Make sure you selected the correct folder (where&nbsp;manifest.json&nbsp;is). If built, use the&nbsp;dist&nbsp;folder. * API errors?&nbsp;Double-check your API key, endpoint, and model in settings. * Button not showing?&nbsp;Refresh the page or make sure you’re on chat.openai.com. The extension only works on specific sites. * Build failed?&nbsp;Skip building and try loading the source directly—many simple extensions work without it. * Permission issues?&nbsp;The extension needs permissions for storage and active tabs. Grant them when prompted. What’s Next? Once installed, explore the different modes in settings: Learning Mode, Structured Mode, etc. Refer to the README.md for more features. If you encounter issues, feel free to ask for help or check the GitHub repository for updates. Happy prompting! 🚀</p>
-</div>
-<div style="display: flex; align-items: center; gap: 18px;">
-<img src="2.png" style="width:40%; max-height:600px; object-fit:contain;">
-<div style="flex:1;">
-<pre><code>&lt;mark&gt;Later, after completing the installation, I expected to see some elements of my extension appear on the ChatGPT website. But when I opened the page, nothing had changed. To investigate, I opened up the DevTool of the browser, which exposed the underlying code of the site. I located the elements for the input bar in the ChatGPT interface and copied them. Then I went back to the Cline with a  question: *“I should see a button from Chrome Booster here in this section, but there’s nothing. Could you help me resolve it?”*</code></pre>
-</div>
-</div>
+<p>Here’s your guide formatted cleanly in <strong>Markdown</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># PromptBooster Extension Installation Guide</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This guide will walk you through installing the **PromptBooster** browser extension step by step.  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>The extension works on **Google Chrome**, **Microsoft Edge**, and other **Chromium-based browsers**.  </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>If you're new to browser extensions, don't worry—this is straightforward!</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prerequisites</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A computer with Google Chrome or another Chromium-based browser (like Edge or Brave) installed.  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Basic familiarity with your operating system (e.g., how to open folders and run commands).  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*(Optional)* **Node.js** installed on your system if you need to build the extension from source. You can download it from <span class="co">[</span><span class="ot">nodejs.org</span><span class="co">](https://nodejs.org)</span> if it's not already installed.  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Note:** If you're installing a pre-built version, you don't need Node.js. Check if the repository has a built version.</span>  </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; If no </span><span class="in">`dist`</span><span class="at"> folder is visible, you may need to build.</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1: Download the Extension Code</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Go to the GitHub repository: <span class="co">[</span><span class="ot">PromptBooster</span><span class="co">](https://github.com/CharlotteZSY0205/PromptBooster)</span>.  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Click the green **Code** button.  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Select **Download ZIP** to download the source code.  </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Unzip the file to a folder on your computer (e.g., Desktop or Documents). This folder will be your extension’s root directory.  </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**Alternatively, with Git installed:**  </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CharlotteZSY0205/PromptBooster.git</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> PromptBooster</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="step-2-optional-build-the-extension" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-optional-build-the-extension">Step 2: (Optional) Build the Extension</h2>
+<p>If there’s no <code>dist</code> or <code>build</code> folder in the unzipped/cloned directory, or you see source files like <code>.js</code> in <code>src/</code>, build as follows:</p>
+<ol type="1">
+<li><p>Open a terminal/command prompt.</p></li>
+<li><p>Navigate to the extension’s root folder (where <code>package.json</code> is located):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/PromptBooster</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Install dependencies:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Build the extension:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Tip for novices:</strong> If you see an error, try skipping to Step 3. Many extensions don’t need building.</p>
+</blockquote>
 </section>
-<section id="takeaways" class="level3">
-<h3 class="anchored" data-anchor-id="takeaways">Takeaways</h3>
-<p>First, collaborating with AI to develop an extension or software is ideal for multitasking. Since AI needs time to process requirements, analyze the code, and propose the best strategy, I can use that waiting period to tackle other tasks. For example, while developing this extension, I also worked on writing this blog about the process. This not only saved time but also helped me preserve a fresh memory of the entire workflow.</p>
-<p>Second, even though AI is capable of debugging, we still need to stay flexible and adapt to the current status of the code. Sometimes, when AI fails to achieve a goal after several attempts, it’s necessary to explore alternative solutions. For instance, I found it useful to ask AI to generate logs and then feed those logs back into the system. This gave AI a clearer picture of what had been accomplished and what went wrong. In other words, we cannot simply expect AI to finish the task on its own — we have to think critically and provide multiple options or strategies to guide it.</p>
-<p>Third, it’s important to remember to push the code once it reaches a satisfying state. If you move on to the next iteration and AI makes major changes that worsen the outcome, you’ll want to revert to the earlier version. That’s only possible if you’ve pushed it beforehand. As a bonus tip, if you’re unhappy with the current version, you can use git stash to temporarily save it in a separate place. That way, you can easily return to the most recent pushed version whenever needed.</p>
-<p>````</p>
+<section id="step-3-load-the-extension-into-your-browser" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-load-the-extension-into-your-browser">Step 3: Load the Extension into Your Browser</h2>
+<section id="google-chrome" class="level3">
+<h3 class="anchored" data-anchor-id="google-chrome">Google Chrome</h3>
+<ol type="1">
+<li><p>Open Chrome.</p></li>
+<li><p>Go to <code>chrome://extensions/</code>.</p></li>
+<li><p>Enable <strong>Developer mode</strong> (top-right corner).</p></li>
+<li><p>Click <strong>Load unpacked</strong>.</p></li>
+<li><p>Select the extension’s root folder (must contain <code>manifest.json</code>).</p>
+<ul>
+<li>If you built it: select the <code>dist</code> or <code>build</code> folder.</li>
+</ul></li>
+</ol>
+</section>
+<section id="microsoft-edge" class="level3">
+<h3 class="anchored" data-anchor-id="microsoft-edge">Microsoft Edge</h3>
+<ol type="1">
+<li>Open Edge.</li>
+<li>Go to <code>edge://extensions/</code>.</li>
+<li>Enable <strong>Developer mode</strong> (bottom-left corner).</li>
+<li>Click <strong>Load unpacked</strong>.</li>
+<li>Select the extension’s root folder.</li>
+</ol>
+</section>
+<section id="firefox" class="level3">
+<h3 class="anchored" data-anchor-id="firefox">Firefox</h3>
+<p>⚠️ The extension is designed for Chromium-based browsers. Using it in Firefox requires conversion, which is more advanced. If you’re a beginner, use Chrome or Edge instead.</p>
+</section>
+</section>
+<section id="step-4-configure-the-extension" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-configure-the-extension">Step 4: Configure the Extension</h2>
+<ol type="1">
+<li><p>Open <code>chrome://extensions</code> (or <code>edge://extensions</code>).</p></li>
+<li><p>Find <strong>PromptBooster</strong> → click <strong>Details</strong> → <strong>Extension options</strong>.</p></li>
+<li><p>Configure:</p>
+<ul>
+<li><strong>API Key</strong>: Paste your OpenAI-compatible API key.</li>
+<li><strong>API Endpoint URL</strong>: Default values are usually fine.</li>
+<li><strong>Model</strong>: e.g., GPT-4.</li>
+<li><strong>Default Mode</strong>: Recommended: <em>Learning Mode</em>.</li>
+<li><strong>Preview Option</strong>: Enable if you want to review rewritten prompts before sending.</li>
+</ul></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Tip:</strong> Get an API key from <a href="https://platform.openai.com/">OpenAI</a> if you don’t already have one.</p>
+</blockquote>
+</section>
+<section id="step-5-test-the-extension" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-test-the-extension">Step 5: Test the Extension</h2>
+<ol type="1">
+<li><p>Go to <a href="https://chat.openai.com">ChatGPT</a> (or another supported chatbot).</p></li>
+<li><p>Log in.</p></li>
+<li><p>Type a prompt, e.g., <code>Tell me about dogs.</code></p></li>
+<li><p>You should see a <strong>Boost Prompt</strong> button next to <strong>Send</strong>.</p></li>
+<li><p>Click <strong>Boost Prompt</strong>.</p>
+<ul>
+<li>If preview is enabled, you’ll see the rewritten prompt first.</li>
+</ul></li>
+<li><p>In the chat history, you’ll see both your original and boosted prompts.</p></li>
+</ol>
+</section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>Extension not loading?</strong> Make sure you selected the correct folder (must contain <code>manifest.json</code>).</li>
+<li><strong>API errors?</strong> Double-check your API key, endpoint, and model.</li>
+<li><strong>Button not showing?</strong> Refresh the page and make sure you’re on <code>chat.openai.com</code>.</li>
+<li><strong>Build failed?</strong> Skip building and load the source directly.</li>
+<li><strong>Permission issues?</strong> Grant storage and active tab permissions when prompted.</li>
+</ul>
+</section>
+<section id="whats-next" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next">What’s Next?</h2>
+<ul>
+<li>Explore different modes in settings: <em>Learning Mode</em>, <em>Structured Mode</em>, etc.</li>
+<li>Refer to the repository’s <code>README.md</code> for advanced features.</li>
+<li>If you encounter issues, check the <a href="https://github.com/CharlotteZSY0205/PromptBooster">GitHub repository</a> for updates.</li>
+</ul>
+<p><strong>Happy prompting! 🚀</strong></p>
+<pre><code>
+
+&lt;/div&gt;
 
 
+&lt;div style="display: flex; align-items: center; gap: 18px;"&gt;
+  &lt;img src="2.png" style="width:40%; max-height:600px; object-fit:contain;"/&gt;
+  &lt;div style="flex:1;"&gt;
+    &lt;mark&gt;Later, after completing the installation, I expected to see some elements of my extension appear on the ChatGPT website. But when I opened the page, nothing had changed. To investigate, I opened up the DevTool of the browser, which exposed the underlying code of the site. I located the elements for the input bar in the ChatGPT interface and copied them. Then I went back to the Cline with a  question: *“I should see a button from Chrome Booster here in this section, but there’s nothing. Could you help me resolve it?”*
+  &lt;/div&gt;
+&lt;/div&gt;
+
+### Takeaways
+First, collaborating with AI to develop an extension or software is ideal for multitasking. Since AI needs time to process requirements, analyze the code, and propose the best strategy, I can use that waiting period to tackle other tasks. For example, while developing this extension, I also worked on writing this blog about the process. This not only saved time but also helped me preserve a fresh memory of the entire workflow.
+
+Second, even though AI is capable of debugging, we still need to stay flexible and adapt to the current status of the code. Sometimes, when AI fails to achieve a goal after several attempts, it’s necessary to explore alternative solutions. For instance, I found it useful to ask AI to generate logs and then feed those logs back into the system. This gave AI a clearer picture of what had been accomplished and what went wrong. In other words, we cannot simply expect AI to finish the task on its own — we have to think critically and provide multiple options or strategies to guide it.
+
+Third, it’s important to remember to push the code once it reaches a satisfying state. If you move on to the next iteration and AI makes major changes that worsen the outcome, you’ll want to revert to the earlier version. That’s only possible if you’ve pushed it beforehand. As a bonus tip, if you’re unhappy with the current version, you can use git stash to temporarily save it in a separate place. That way, you can easily return to the most recent pushed version whenever needed.
+
+
+
+
+</code></pre>
+
+
+</section>
+</div>
 </section>
 
 </main> <!-- /main -->
