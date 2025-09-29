@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Shiyang Zhang">
-<meta name="dcterms.date" content="2025-09-18">
-<meta name="description" content="Fixing bugs, refining the interface, and learning how to “talk to AI” so it gives me the exact code I need.">
+<meta name="dcterms.date" content="2025-09-25">
+<meta name="description" content="Prompt Booster is a lightweight browser plugin that helps you transform simple, vague, or overly dependent prompts into well-structured, thought-provoking ones—making your conversations with ChatGPT more effective and insightful.">
 
-<title>Two Days, One Extension: How I Build My First Extension With Cline (Part 2) – Shiyang’s Explorations with LLMs</title>
+<title>Introducing The First Extension I Developed: Prompt Booster – Shiyang’s Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,10 +120,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Two Days, One Extension: How I Build My First Extension With Cline (Part 2)</h1>
+      <h1 class="title">Introducing The First Extension I Developed: Prompt Booster</h1>
                   <div>
         <div class="description">
-          Fixing bugs, refining the interface, and learning how to “talk to AI” so it gives me the exact code I need.
+          Prompt Booster is a lightweight browser plugin that helps you transform simple, vague, or overly dependent prompts into well-structured, thought-provoking ones—making your conversations with ChatGPT more effective and insightful.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -148,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 18, 2025</p>
+        <p class="date">September 25, 2025</p>
       </div>
     </div>
     
@@ -167,173 +167,94 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="my-debugging-workflow-me-to-describe-chatgpt-to-refine-cline-to-write-code" class="level2">
-<h2 class="anchored" data-anchor-id="my-debugging-workflow-me-to-describe-chatgpt-to-refine-cline-to-write-code">My Debugging Workflow: Me to describe → ChatGPT to refine → Cline to write code</h2>
+<section id="what-is-prompt-booster-and-why-was-it-designed" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-prompt-booster-and-why-was-it-designed">What is Prompt Booster and why was it designed?</h3>
+<p>Prompt Booster was created to help users get more out of their interactions with AI. Too often, prompts are either too shallow (outsourcing all the thinking to the AI) or too generic (leading to weak or superficial responses). Prompt Booster solves this problem by automatically enhancing prompts before they’re sent with one click, giving users a smoother and quicker way to achieve richer, more reliable outputs.</p>
+<p><strong>Two Core Features</strong></p>
 <ol type="1">
-<li><p><strong>Self-Testing and Recording</strong> I begin by testing the plugin myself in real scenarios. I record the exact steps where issues occur, note the expected vs.&nbsp;actual behavior, and keep screenshots or short recordings when necessary. I also make a quick verbal note of the effect I want, including non-functional aspects such as consistency, accessibility, and performance.</p></li>
-<li><p><strong>Turning Verbal Notes into Structured Specifications</strong> I then describe the issue informally to ChatGPT. Its role is to reorganize my raw, messy descriptions into a clear, logically structured specification: defining the problem, reproducing steps, acceptance criteria, edge cases, and the intended fix. The idea is to turn “natural language frustration” into “an actionable task.”</p></li>
-<li><p><strong>Passing Structured Specs to the Client/Agent</strong> Once ChatGPT produces a polished specification, I copy this into the client side for actual modification. When UI or interaction is involved, I emphasize that the flow and design guidelines must be aligned before touching the code.</p></li>
-<li><p><strong>Re-Testing and Regression</strong> After the client makes changes, I test again using the acceptance criteria. I check both normal and edge cases (empty inputs, switching modes, collapse/expand, keyboard focus). If regressions appear, I loop back: describe verbally, get ChatGPT to rewrite as a precise patch spec, and resubmit.</p></li>
+<li><p><strong>Prompt Improvement</strong> Users can ask Prompt Booster to improve their prompts in ways that fit their goals. For example:</p>
+<ul>
+<li>Transform a vague request into a <strong>comprehensive and evidence-based prompt</strong> that encourages ChatGPT to provide well-supported, verifiable responses.</li>
+<li>Reframe a lazy or over-reliant prompt into one that <strong>guides the user to complete the task themselves</strong>, rather than asking the AI to do all the work.</li>
+<li>Encourage <strong>deeper reflection or critical thinking</strong> by automatically rewriting prompts to push the AI toward more analytical or thought-provoking answers.</li>
+</ul></li>
+<li><p><strong>Prompt Append</strong> With a single click, users can add predefined, repeatable requirements to any new input. This saves time and ensures consistency across different tasks. For example:</p></li>
 </ol>
-<p>This workflow can be told in a three-part rhythm in the blog: ****. I raise the issue, ChatGPT turns it into a professional spec, and the code gets updated. Each cycle can be illustrated with a screenshot or before/after comparison.</p>
+<ul>
+<li><p><strong>Translate</strong>: <em>Translate the above text into natural, fluent English that reads as if written by a native speaker.</em></p></li>
+<li><p><strong>Polish</strong>: <em>Polish and refine the language to make it smoother, more professional, and stylistically consistent.</em></p></li>
+<li><p><strong>Summarize</strong>: <em>Summarize the content clearly and concisely, highlighting the key points in a structured way.</em></p></li>
+<li><p><strong>Simplify</strong>: <em>Rewrite this paragraph so it is easier to understand, using simpler words and clearer sentence structures.</em></p></li>
+</ul>
+</section>
+<section id="how-to-get-started-with-prompt-booster" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-get-started-with-prompt-booster">How to Get Started with Prompt Booster</h3>
+<section id="install-connect" class="level4">
+<h4 class="anchored" data-anchor-id="install-connect"><strong>1. Install &amp; Connect</strong></h4>
+<p>First things first—get Prompt Booster onto your browser.</p>
+<ul>
+<li>Add <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Booster</code> to Chrome and pin it to your toolbar so it’s always just one click away.</li>
+<li>Open the settings page (look for the little gear ⚙️) and paste in your API key.</li>
+<li>Not sure where to find your API key? No problem—<a href="https://www.merge.dev/blog/chatgpt-api-key">here’s a quick guide</a> that walks you through it.</li>
+</ul>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="1.png" width="45%"> <img src="2.png" width="37%"></p>
+</div>
 <blockquote class="blockquote">
-<p>Since I didn’t take a screenshot every time I discovered and resolved a bug, I’ll instead include a selection of screenshots showing different stages of the extension’s development, where you can see both some of the bugs and their resolved versions</p>
+<p>This is the main interface of the software. In terms of visual design, I made the buttons consistent with ChatGPT’s own buttons to achieve a clean and sophisticated style. I chose purple as the primary color—not only because it conveys a sense of elegance, but also because of my personal connection to my undergraduate alma mater, The Chinese University of Hong Kong, Shenzhen, where purple is one of the theme colors in its emblem. I also added a gear button so that users can quickly access the plugin’s settings. Otherwise, using KORN’s built-in method would be too cumbersome, since users would have to click <em>Extension</em>, then <em>More Options</em>, and finally <em>Options</em>.</p>
 </blockquote>
 </section>
-<section id="bug-narratives-and-interaction-with-chatgpt" class="level2">
-<h2 class="anchored" data-anchor-id="bug-narratives-and-interaction-with-chatgpt">Bug Narratives and Interaction with ChatGPT</h2>
-<section id="bug-a-comparison-panel-not-fully-collapsing-triangle-indicator-misaligned" class="level3">
-<h3 class="anchored" data-anchor-id="bug-a-comparison-panel-not-fully-collapsing-triangle-indicator-misaligned">Bug A: Comparison Panel Not Fully Collapsing, Triangle Indicator Misaligned</h3>
-<p><strong>Where I Noticed It</strong> When I collapsed the comparison panel, the “UseOriginal” and “UseBoosted” buttons were still visible. Above the small triangle, there was also a stray line. The triangle itself was misaligned and undersized.</p>
-<p><strong>My Verbal Request</strong> I wanted the panel to collapse completely, leaving only a small triangle as a handle to expand again. The stray line should disappear. The triangle needed to be positioned slightly higher, made larger, rounded at the corners, colored consistently with the “UseBoosted” button, and given a subtle shadow.</p>
-<p><strong>ChatGPT’s Reorganized Specification</strong></p>
+<section id="configure-your-prompt-modes" class="level4">
+<h4 class="anchored" data-anchor-id="configure-your-prompt-modes"><strong>2. Configure Your Prompt Modes</strong></h4>
+<p>This is where the fun begins—you can customize Prompt Booster to work exactly the way you want.</p>
 <ul>
-<li><p>Problem: Collapsed state not hiding content, stray visual elements, misaligned and inconsistent triangle.</p></li>
-<li><p>Goal: Collapsed view shows only a clickable triangle handle, everything else hidden. Expanding restores previous state and scroll position.</p></li>
-<li><p>Acceptance Criteria:</p>
-<ol type="1">
-<li>Only the triangle is visible when collapsed; other elements are fully hidden and inaccessible.</li>
-<li>Triangle has rounded corners, sits slightly above the input box, and is proportionally larger.</li>
-<li>Its color matches the “UseBoosted” button and it has a subtle shadow.</li>
-<li>Expanding restores content unchanged.</li>
-</ol></li>
+<li>Go to <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">My Prompts</code> to create or edit both <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Boost Prompts</code> and <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Append Prompts</code>.</li>
+<li>Drag and drop them around with the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#ff8c42;">three-line icon</code> to reorder.</li>
+<li>Pro tip: the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">top three prompts</code> become quick-access buttons right in your ChatGPT input box, so keep your favorites up there.</li>
 </ul>
-<p><strong>Outcome and Reflection</strong> This change improved both accessibility and user experience. The panel is now truly collapsible, while state persistence ensures the comparison process is not disrupted.</p>
-<div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
-<p><img src="v1 .png" width="30%"> <img src="v2.png" width="20%"> <img src="v3.png" width="30%"></p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="3.png" width="45%"></p>
 </div>
 </section>
-<section id="bug-b-button-inconsistencies-clear-edit-delete" class="level3">
-<h3 class="anchored" data-anchor-id="bug-b-button-inconsistencies-clear-edit-delete">Bug B: Button Inconsistencies (Clear, Edit, Delete)</h3>
-<p><strong>Where I Noticed It</strong> The “Clear” button looked different from other buttons. In the Settings page, buttons for editing, deleting, and adding prompts had visible borders that clashed with the rest of the design.</p>
-<p><strong>My Verbal Request</strong> I wanted the “Clear” button to look consistent with other buttons, and for all Settings page action buttons to have no border lines.</p>
-<p><strong>ChatGPT’s Reorganized Specification</strong></p>
-<ul>
-<li>Problem: Inconsistent button design language.</li>
-<li>Goal: Unify button system (size, corner radius, font, spacing). Action buttons should use a borderless style.</li>
-<li>Guidelines: Border: Same color/transparent as the background, visually appearing borderless (border: 1px solid transparent) to avoid a darker outline. Idle State:</li>
-<li>Background: Neutral color (e.g., #F5F5F7 or system light gray), transparent border.</li>
-<li>Font: Medium contrast.</li>
-<li>Hover: Subtle shadow or light elevation, no border color change. Active State:</li>
-<li>Background: Light fill of brand color (e.g., –brand-50), border remains transparent.</li>
-<li>Font/Icon: Darker tone of the brand color (e.g., –brand-700).</li>
-<li>Optional: Inner glow or subtle highlight instead of a visible border. Disabled State:</li>
-<li>Faded background, reduced text opacity.</li>
-<li>Used only in rare cases such as “in processing” or “switching not allowed.”</li>
-</ul>
-<p><strong>Outcome and Reflection</strong> A consistent button system reduced visual noise and made interactions easier to understand at a glance.</p>
-</section>
-<section id="bug-c-my-prompts-text-and-add-button-layout" class="level3">
-<h3 class="anchored" data-anchor-id="bug-c-my-prompts-text-and-add-button-layout">Bug C: My Prompts Text and Add Button Layout</h3>
-<p><strong>Where I Noticed It</strong> The My Prompts section displayed too many explanatory lines, and the “Add” button’s position conflicted with the title.</p>
-<p><strong>My Verbal Request</strong> I wanted to keep only the line: <em>“Drag to reorder. Top 3 appear as buttons above the input.”</em> The other sentences should be removed. The “Add” button should move to the top-right corner of the prompt items container, slightly above the list, and not aligned with the section title. Its style should match the “Save Connection” button, and it should have a background color even when idle.</p>
-<p><strong>ChatGPT’s Reorganized Specification</strong></p>
-<ul>
-<li><p>Goal: Simplify helper text and reposition “Add” for clarity.</p></li>
-<li><p>Acceptance Criteria:</p>
-<ol type="1">
-<li>Only the concise helper text remains.</li>
-<li>“Add” button is visually aligned with the prompt list container, not the header.</li>
-<li>“Add” button design matches “Save Connection” and has a default background color.</li>
-</ol></li>
-</ul>
-<p><strong>Outcome and Reflection</strong> The section is cleaner and the Add button’s placement now clearly signals its scope of action.</p>
-<div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
-<p><img src="b1.png" width="35%"> <img src="b2.png" width="35%"> <img src="b3.png" width="35%"></p>
+<section id="boost-mode-smarten-up-your-prompts" class="level4">
+<h4 class="anchored" data-anchor-id="boost-mode-smarten-up-your-prompts"><strong>Boost Mode: Smarten Up Your Prompts</strong></h4>
+<p>Ever typed something vague into ChatGPT and wished it came out sharper, deeper, or more structured? That’s exactly what <strong>Boost Mode</strong> is for.</p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="4.png" width="45%"> <img src="7.png" width="45%"></p>
 </div>
-</section>
-<section id="bug-d-remove-default-optimization-style-from-settings-persist-active-mode-via-header-buttons" class="level3">
-<h3 class="anchored" data-anchor-id="bug-d-remove-default-optimization-style-from-settings-persist-active-mode-via-header-buttons">Bug D: Remove “Default Optimization Style” from Settings &amp; Persist Active Mode via Header Buttons</h3>
-<p><strong>Where I Noticed It</strong> The Settings page still has a “default optimization style” option, which causes confusion because the active mode should really be set from the header buttons in the chat interface.</p>
-<p><strong>My Verbal Request</strong> I want to remove the “default optimization style” from Settings completely, and instead let users select and persist their active mode by clicking the header buttons.</p>
-<p><strong>ChatGPT’s Reorganized Specification</strong></p>
-<ol start="2" type="1">
-<li>Remove “default optimization style” from Settings; persist active mode via header buttons</li>
-</ol>
-<p><strong>Problem</strong> Currently there is a “default optimization style” in Settings. You want to remove that, and instead let the user set their “default” (active) mode by clicking one of the three header buttons above the input box. Once selected, that mode stays active and applies to subsequent messages until the user switches to another mode (or clears it).</p>
-<p><strong>Requirements</strong></p>
-<p><em>No default in Settings</em></p>
 <ul>
-<li>Remove the “default optimization style” field/option from Settings entirely.</li>
-<li>Settings only manages items (Replace/Append), their content, and their order. The active mode is not chosen in Settings.</li>
+<li>Just tap the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Boost</code> button from the quick options.</li>
+<li>Hit the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Boost</code> button or press <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#d04747;">⌥/Alt + Enter</code> to instantly upgrade your prompt.</li>
+<li>If you enable <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Review</code>, you’ll see your <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">original vs.&nbsp;boosted prompt</code> side by side—super handy for comparing.</li>
+<li>You can choose <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Use Original</code> or <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Use Boosted</code>, or just press <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#d04747;">⌥/Alt + Enter</code> again to send whichever you like.</li>
+<li>Not quite there yet? Click <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Reboost</code> to spin up another optimized version until it feels right.</li>
 </ul>
-<p><em>Active mode is chosen in the chat header (three buttons)</em></p>
-<ul>
-<li><p>Clicking any header button sets that item as the active mode.</p></li>
-<li><p>The active mode remains in effect across attempts (i.e., across consecutive sends) until:</p>
-<ul>
-<li>The user clicks a different header button (which switches the active mode), or</li>
-<li>The user clicks a Clear control (see below), or</li>
-<li>The active item is deleted/disabled in Settings (auto-clears).</li>
-</ul></li>
-</ul>
-<p><strong>Outcome and Reflection</strong> This change simplifies Settings, removes redundancy, and makes the active mode behavior clearer and more consistent for users.</p>
-</section>
-<section id="bug-e-enter-key-behavior-interaction-logic" class="level3">
-<h3 class="anchored" data-anchor-id="bug-e-enter-key-behavior-interaction-logic">Bug E: Enter Key Behavior &amp; Interaction Logic</h3>
-<p><strong>Where I Noticed It</strong> The current system doesn’t fully respect the active mode when pressing Enter, and the role of the mode buttons is slightly unclear.</p>
-<p><strong>My Verbal Request</strong> I want pressing Enter to automatically respect whichever mode is active, and the header buttons to be able to toggle off. The three mode buttons should only act as selectors, never sending anything themselves.</p>
-<p><strong>ChatGPT’s Reorganized Specification</strong></p>
-<ol start="3" type="1">
-<li>Enter key respects active mode; header button toggles to clear Requirement</li>
-</ol>
-<ul>
-<li>When any of the three header modes is selected (active), pressing Enter in the chat input must send the boosted prompt (Append = append then send; Replace = replace then send).</li>
-<li>Pressing the selected header button again toggles it off (clears active mode). When no mode is active, pressing Enter sends the original prompt (unaltered).</li>
-</ul>
-<ol type="1">
-<li>Interaction Logic (updated) Button Role The three mode buttons (e.g., A / B / C) only select/deselect a mode; they never send. Whatever user type in the input box, if one mode is selected, the input will be modified according to the mode.</li>
-</ol>
-<p>Workflow</p>
-<ol type="1">
-<li>The user selects a mode (or clicks the same button again to cancel → returns to “unselected”).</li>
-<li>The user finishes typing the prompt.</li>
-<li>The user clicks Boost Prompt.</li>
-<li>The system rewrites the prompt based on the selected mode → inserts the rewrite into the input field or replaces the existing content (per your replace/append setting), without auto-sending.</li>
-<li>The user reviews and sends manually.</li>
-</ol>
-<p>Selection Rules (single-select, cancelable)</p>
-<ul>
-<li>Click an unselected button → it becomes selected; others are deselected.</li>
-<li>Click the selected button again → deselect and enter “no mode.”</li>
-</ul>
-<p>Additional Rules</p>
-<ul>
-<li>Append mode: never auto-sends.</li>
-<li>Boosted Prompt mode: never auto-sends and must preserve the comparison panel (before vs.&nbsp;after) previously designed. Do not remove that panel.</li>
-</ul>
-<p><strong>Outcome and Reflection</strong> This ensures consistency: pressing Enter follows the currently active mode, but users can clear modes by toggling buttons. It also clarifies that mode buttons are selectors only, preserving manual control over sending.</p>
-<div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-bottom:24px; margin-top:24px;">
-<p><img src="c1.png" width="35%"> <img src="c2.png" width="35%"> <img src="c3.png" width="35%"></p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="5.png" width="45%"></p>
 </div>
+<blockquote class="blockquote">
+<p>Here I added a <strong>Prompt Review</strong> feature that lets users compare their original prompt with the revised one. On the one hand, this gives them the option to still use their own prompt. On the other hand, it allows them to see what the revised prompt looks like, making it more likely they’ll use it as a reference to learn how to craft more effective or better-tailored prompts. To prevent situations where users are dissatisfied with the revised prompt, I also added a <strong>Reboost</strong> function, which lets them request another revision. I also added keyboard shortcuts. At first, the shortcut for sending a prompt modified by PromptBooster was Enter. But during my own use, I realized I don’t always need PromptBooster. So I kept Enter for sending my original prompt, and added Option + Enter for sending the boosted version in the selected mode. This way, users stay in control while still having the quickest way to use PromptBooster.</p>
+</blockquote>
 </section>
-<section id="bug-f-prompt-item-borders-and-font-weight" class="level3">
-<h3 class="anchored" data-anchor-id="bug-f-prompt-item-borders-and-font-weight">Bug F: Prompt Item Borders and Font Weight</h3>
-<p><strong>Where I Noticed It</strong> Each prompt item (like Emoji, Creative, Translation) had light borders, which made the layout look cluttered. The Edit and Delete labels were also slightly oversized.</p>
-<p><strong>My Verbal Request</strong> I wanted to remove the borders, reduce the font size of Edit and Delete slightly, and keep the Add button with a background even in its idle state.</p>
-<p><strong>ChatGPT’s Reorganized Specification</strong></p>
+<section id="append-mode-add-your-personal-touch" class="level4">
+<h4 class="anchored" data-anchor-id="append-mode-add-your-personal-touch"><strong>Append Mode: Add Your Personal Touch</strong></h4>
+<p>Sometimes you don’t want your whole prompt rewritten—you just want to make sure a certain instruction always gets added. That’s where <strong>Append Mode</strong> shines.</p>
 <ul>
-<li><p>Goal: Remove unnecessary card borders, rely on spacing to separate items, and adjust typography for action labels.</p></li>
-<li><p>Acceptance Criteria:</p>
-<ol type="1">
-<li>No visible borders around prompt items; spacing and padding define structure.</li>
-<li>Edit/Delete labels use a slightly smaller font size.</li>
-<li>Add button retains a default background.</li>
-</ol></li>
+<li>Select <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Append</code> (paperclip-style icon) from the quick buttons.</li>
+<li>Click <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Boost</code> or press <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#d04747;">⌥/Alt + Enter</code>—your input goes through exactly as written, but with your chosen “append rules” automatically tacked on.</li>
 </ul>
-<p><strong>Outcome and Reflection</strong> The result is a cleaner, more modern look. The list feels lighter and more professional, while action labels no longer dominate visually.</p>
-</section>
-</section>
-<section id="takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
-<p>First, collaborating with AI to develop an extension or software is ideal for multitasking. Since AI needs time to process requirements, analyze the code, and propose the best strategy, I can use that waiting period to focus on other tasks. For example, while developing this extension, I also worked on writing a blog about the process. This not only saved time but also helped me keep a fresh memory of the entire workflow.</p>
-<p>Second, it’s important to remember to push the code once it reaches a satisfactory state. If you move on to the next iteration and AI introduces major changes that worsen the outcome, you’ll want to revert to the earlier version — which is only possible if you’ve pushed it beforehand. As a bonus tip, if you’re unhappy with the current version, you can use git stash to temporarily save it in a separate place. That way, you can easily return to the most recent pushed version whenever needed.</p>
-<p>Third, even though AI is capable of debugging, we still need to remain flexible and adapt to the current status of the code. Sometimes, when AI fails to achieve a goal after several attempts, it becomes necessary to explore alternative solutions. For instance, I found it useful to ask AI to generate logs and then feed those logs back into the system. This gave AI a clearer understanding of what had been accomplished and what went wrong. In other words, we cannot simply expect AI to finish the task on its own — we have to think critically and provide multiple options or strategies to guide it.</p>
-<p>Finally, although describing bugs and formulating a well-structured request for ChatGPT can make inputs more organized, I noticed that sometimes a plain and simple description written directly by me led to more effective debugging. I suspect this is because ChatGPT’s reorganized versions can be overly long or mundane, adding unnecessary noise for both the model and the client to process. In these cases, relying on my own straightforward explanation worked better than depending on ChatGPT’s reformulations.</p>
-<p>Throughout the creation, I found that whether it was drafting the design document or writing the code, I found that the AI considered all the essential aspects of building an extension. It even anticipated how users would navigate the extension and added many features and options beyond my original requirements, which I found quite amazing. For example, I never gave any instructions on the visual design, but GPT-5 automatically chose a sleek purple theme with gradient effects and designed the button styles and the settings page layout. I hardly made any changes to this style because it was already more than satisfactory. Later, when I asked GPT-5 to refine the design by removing the button border, it provided a detailed color specification covering three states: unselected, hover, and selected. This level of comprehensiveness went far beyond my expectations, since I wouldn’t have thought to account for all those conditions. In terms of functionality, the AI also created features I hadn’t considered, such as an API input bar and an option allowing users to preview the modified prompt before sending it. What impressed me most was that I didn’t need to specify every detail — with only simple descriptions from me, the AI was able to design thoughtful features and interfaces on its own.</p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="5.png" width="45%"></p>
+</div>
+<p>✨ And that’s it—you’re ready to roll! With <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Booster</code>, you can choose between fully <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">boosting your prompt</code> for depth and quality or simply <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">appending your go-to rules</code> with a single click.</p>
+<p>Your prompts, your way—just smarter. 💡</p>
+<blockquote class="blockquote">
+<p>Next, I’m going to collaborate with NanoBanana to create the logo for this extension, and I’ll also submit it for review and try to publish it so that it can actually be used by the public.</p>
+</blockquote>
 <p>````</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
