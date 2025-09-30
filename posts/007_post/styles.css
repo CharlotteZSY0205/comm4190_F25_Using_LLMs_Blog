@@ -14,10 +14,8 @@
 body {
   font-family: "Inter", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   color: var(--pb-text);
-  background:
-    radial-gradient(circle at top left, rgba(91, 63, 212, 0.12), transparent 55%),
-    radial-gradient(circle at 85% 10%, rgba(255, 154, 90, 0.15), transparent 58%),
-    var(--pb-background);
+  background: linear-gradient(150deg, rgba(91, 63, 212, 0.08) 0%, rgba(255, 154, 90, 0.06) 35%, rgba(255, 255, 255, 0.6) 100%), var(--pb-background);
+  background-attachment: fixed;
   margin: 0;
   line-height: 1.75;
   font-size: 1rem;
