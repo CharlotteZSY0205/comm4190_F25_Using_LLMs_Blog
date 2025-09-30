@@ -158,19 +158,19 @@ li > p {
 
 blockquote {
   margin: 1.9rem 0;
-  padding: 1.35rem 1.6rem;
-  background: rgba(255, 255, 255, 0.68);
-  border-left: 4px solid rgba(91, 63, 212, 0.35);
+  padding: 1.3rem 1.55rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-left: 3px solid rgba(91, 63, 212, 0.28);
   border-radius: 14px;
-  box-shadow: 0 16px 32px rgba(28, 18, 66, 0.04);
+  box-shadow: 0 12px 26px rgba(28, 18, 66, 0.035);
   color: var(--pb-text);
-  font-size: 0.95rem;
-  line-height: 1.58;
+  font-size: 0.9rem;
+  line-height: 1.52;
 }
 
 blockquote p {
-  margin-bottom: 0.45rem;
-  line-height: 1.58;
+  margin-bottom: 0.4rem;
+  line-height: 1.52;
 }
 
 blockquote p:last-child {
