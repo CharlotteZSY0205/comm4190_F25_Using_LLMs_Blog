@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Shiyang Zhang">
-<meta name="dcterms.date" content="2025-09-25">
-<meta name="description" content="Prompt Booster is a lightweight browser plugin that helps you transform simple, vague, or overly dependent prompts into well-structured, thought-provoking ones—making your conversations with ChatGPT more effective and insightful.">
+<meta name="dcterms.date" content="2025-10-25">
+<meta name="description" content="PokeAI is a proactive AI assistant connected to Gmail and iMessage. In this first part, I introduce what PokeAI is and my initial interaction with it.">
 
-<title>Introducing The First Extension I Developed: Prompt Booster – Shiyang’s Explorations with LLMs</title>
+<title>PokeAI: A Novel AI Assistant That Pushes Back (Part I) – Shiyang's Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,17 +118,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Introducing The First Extension I Developed: Prompt Booster</h1>
+      <h1 class="title">PokeAI: A Novel AI Assistant That Pushes Back (Part I)</h1>
                   <div>
         <div class="description">
-          Prompt Booster is a lightweight browser plugin that helps you transform simple, vague, or overly dependent prompts into well-structured, thought-provoking ones—making your conversations with ChatGPT more effective and insightful.
+          PokeAI is a proactive AI assistant connected to Gmail and iMessage. In this first part, I introduce what PokeAI is and my initial interaction with it.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Coding</div>
-                <div class="quarto-category">Extension Devlopment</div>
-                <div class="quarto-category">Cline</div>
-                <div class="quarto-category">Codex</div>
+                <div class="quarto-category">AI assistant</div>
+                <div class="quarto-category">HCI</div>
               </div>
                   </div>
   </div>
@@ -146,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 25, 2025</p>
+        <p class="date">October 25, 2025</p>
       </div>
     </div>
     
@@ -165,113 +163,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="what-is-prompt-booster-and-why-was-it-designed" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-prompt-booster-and-why-was-it-designed">What is Prompt Booster and why was it designed?</h3>
-<p>Prompt Booster was created to help users get more out of their interactions with AI. Too often, prompts are either too shallow (outsourcing all the thinking to the AI) or too generic (leading to weak or superficial responses). Prompt Booster solves this problem by automatically enhancing prompts before they’re sent with one click, giving users a smoother and quicker way to achieve richer, more reliable outputs.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="1.PNG" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Prompt Booster interface showing quick Boost and Append shortcuts</figcaption>
-</figure>
+<p><strong>What is <a href="https://poke.com/">PokeAI</a> </strong></p>
+PokeAI is a proactive AI assistant that connects directly with your Gmail and iMessage. Unlike ChatGPT, it gets real context from your inbox, helps you manage your emails and calendar, and even chats with you inside iMessage. Its goal is to turn your emails into actions and offer help right where you usually text.
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="cover.jpg" width="50%"></p>
 </div>
-<section id="two-core-features" class="level5">
-<h5 class="anchored" data-anchor-id="two-core-features"><strong>Two Core Features</strong></h5>
-<ol type="1">
-<li><p><strong>Prompt Boost</strong> Users can ask Prompt Booster to improve their prompts in ways that fit their goals. For example:</p>
-<ul>
-<li><em>Transform a vague request into a comprehensive and evidence-based prompt that encourages ChatGPT to provide well-supported, verifiable responses.</em></li>
-<li><em>Reframe a lazy or over-reliant prompt into one that guides the user to complete the task themselves, rather than asking the AI to do all the work.</em></li>
-<li><em>Encourage deeper reflection or critical thinking by automatically rewriting prompts to push the AI toward more analytical or thought-provoking answers.</em></li>
-</ul></li>
-<li><p><strong>Prompt Append</strong> With a single click, users can add predefined, repeatable requirements to any new input. This saves time and ensures consistency across different tasks. For example:</p>
-<ul>
-<li><em>Translate: Translate the above text into natural, fluent English that reads as if written by a native speaker.</em></li>
-<li><em>Polish: Polish and refine the language to make it smoother, more professional, and stylistically consistent.</em></li>
-<li><em>Summarize: Summarize the content clearly and concisely, highlighting the key points in a structured way.</em></li>
-<li><em>Simplify: Rewrite this paragraph so it is easier to understand, using simpler words and clearer sentence structures.</em></li>
-</ul></li>
-</ol>
-</section>
-</section>
-<section id="how-to-get-started-with-prompt-booster" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-get-started-with-prompt-booster">How to Get Started with Prompt Booster</h3>
-<section id="install-connect" class="level4">
-<h4 class="anchored" data-anchor-id="install-connect"><strong>1. Install &amp; Connect</strong></h4>
-<p>First things first—get Prompt Booster onto your browser.</p>
-<ul>
-<li>Add <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Booster</code> to Chrome and pin it to your toolbar so it’s always just one click away.</li>
-<li>Open the settings page (look for the little gear) and paste in your API key.</li>
-<li>Not sure where to find your API key? No problem—<a href="https://www.merge.dev/blog/chatgpt-api-key">here’s a quick guide</a> that walks you through it.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="2.PNG" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Prompt Booster settings panel highlighting API key configuration</figcaption>
-</figure>
+<p><strong>The Guardman</strong></p>
+<p>When I first tried PokeAI, I was surprised by how personal it felt. It surpirsingly noticed my situation — for example, it mentioned that it was already late and even asked what a Penn student would be doing at that hour. Its tone can be a bit aggressive, quite different from the polite and obedient style of most large language models. But I think this kind of personality actually makes PokeAI stand out. Instead of just agreeing with everything, it sometimes challenges me and makes the conversation more interesting and real.</p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="2.PNG" width="15%"> <img src="3.jpg" width="15%"> <img src="4.jpg" width="15%"></p>
 </div>
-<blockquote class="blockquote">
-<p>This is the main interface of the software. In terms of visual design, I made the buttons consistent with ChatGPT’s own buttons to achieve a clean and sophisticated style. I chose purple as the primary color—not only because it conveys a sense of elegance, but also because of my personal connection to my undergraduate alma mater, The Chinese University of Hong Kong, Shenzhen, where purple is one of the theme colors in its emblem. I also added a gear button so that users can quickly access the plugin’s settings. Otherwise, using Chrome’s built-in method would be too cumbersome, since users would have to click <em>Extension</em>, then <em>More Options</em>, and finally <em>Options</em>.</p>
-</blockquote>
-</section>
-<section id="configure-your-prompt-modes" class="level4">
-<h4 class="anchored" data-anchor-id="configure-your-prompt-modes"><strong>2. Configure Your Prompt Modes</strong></h4>
-<p>This is where the fun begins—you can customize Prompt Booster to work exactly the way you want.</p>
-<ul>
-<li>Go to <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">My Prompts</code> to create or edit both <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Boost Prompts</code> and <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Append Prompts</code>.</li>
-<li>Drag and drop them around with the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#ff8c42;">three-line icon</code> to reorder.</li>
-<li>Pro tip: the top three prompts become quick-access buttons right in your ChatGPT input box, so keep your favorites up there.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="3.jpg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Organizing personal boost and append prompt presets</figcaption>
-</figure>
+<p><strong>Negotiation</strong></p>
+<p>Later, I realized that PokeAI’s workflow isn’t like any other LLM. You don’t just sign up and start chatting — you first have to talk to the <em>Guardman</em>. He’s the one standing between you and all the premium features. Before accessing anything real, you’ve got to negotiate a subscription fee with him because its subscription fee isn’t fixed. So I started by chatting briefly with the Guardman to try to negotiate the fee. At first, I didn’t know there were tricks to get a free or cheaper subscription, so I just tried my own way.</p>
+<p>I started by playing the poor student card — telling it I was just a broke Penn student. Surprisingly, it roasted me, saying something like, <em>“You buy Starbucks every day and still call yourself poor?”</em> I explained that I was using gift cards, that I didn’t have a job, and that I was living in the U.S. using RMB. That actually worked — the price dropped from $50 to $20.</p>
+<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
+<p><img src="5.jpg" width="15%"> <img src="6.jpg" width="15%"></p>
 </div>
-</section>
-<section id="boost-mode-smarten-up-your-prompts" class="level4">
-<h4 class="anchored" data-anchor-id="boost-mode-smarten-up-your-prompts"><strong>Boost Mode: Smarten Up Your Prompts</strong></h4>
-<p>Ever typed something vague into ChatGPT and wished it came out sharper, deeper, or more structured? That’s exactly what <strong>Boost Mode</strong> is for.</p>
-<ul>
-<li>Just tap the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Boost</code> button from the quick options.</li>
-<li>Hit the <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Boost</code> button or press <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#d04747;">⌥/Alt + Enter</code> to instantly upgrade your prompt.</li>
-<li>If you enable <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Review</code>, you’ll see your <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">original vs.&nbsp;boosted prompt</code> side by side—super handy for comparing.</li>
-<li>You can choose <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Use Original</code> or <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Use Boosted</code>, or just press <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#d04747;">⌥/Alt + Enter</code> again to send whichever you like.</li>
-<li>Not quite there yet? Click <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Reboost</code> to spin up another optimized version until it feels right.</li>
-</ul>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><img src="4.jpg" class="img-fluid quarto-figure quarto-figure-center" style="width:100.0%" alt="Prompt review dialog showing the original prompt on the left"> <img src="5.jpg" class="img-fluid quarto-figure quarto-figure-center" style="width:100.0%" alt="Prompt review dialog highlighting boosted prompt actions"></p>
-</div>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>Here I added a Prompt Review feature that lets users compare their original prompt with the revised one. On the one hand, this gives them the option to still use their own prompt. On the other hand, it allows them to see what the revised prompt looks like, making it more likely they’ll use it as a reference to learn how to craft more effective or better-tailored prompts. To prevent situations where users are dissatisfied with the revised prompt, I also added a Reboost function, which lets them request another revision. I also added keyboard shortcuts. At first, the shortcut for sending a prompt modified by Prompt Booster was Enter. But during my own use, I realized I don’t always need Prompt Booster. So I kept Enter for sending my original prompt, and added Option + Enter for sending the boosted version in the selected mode. This way, users stay in control while still having the quickest way to use Prompt Booster.</p>
-</blockquote>
-</section>
-<section id="append-mode-add-your-personal-touch" class="level4">
-<h4 class="anchored" data-anchor-id="append-mode-add-your-personal-touch"><strong>Append Mode: Add Your Personal Touch</strong></h4>
-<p>Sometimes you don’t want your whole prompt rewritten—you just want to make sure a certain instruction always gets added. That’s where <strong>Append Mode</strong> shines.</p>
-<ul>
-<li>Select <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Append</code> from the quick buttons.</li>
-<li>Click <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#0b66ff;">Prompt Boost</code> or press <code style="background:#f2f4f8;border-radius:6px;padding:2px 6px;color:#d04747;">⌥/Alt + Enter</code>—your input goes through exactly as written, but with your chosen “append rules” automatically tacked on.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="6.jpg" class="img-fluid figure-img" style="width:70.0%"></p>
-<figcaption>Append mode quick actions for adding reusable prompt snippets</figcaption>
-</figure>
-</div>
-<p>✨ <strong>And that’s it—you’re ready to roll! With Prompt Booster, you can choose between fully boosting your prompt for depth and quality or simply appending your go-to rules with a single click.</strong></p>
-<p><strong>Your prompts, your way—just smarter.</strong></p>
-<blockquote class="blockquote">
-<p>Next, I’m going to collaborate with Nano Banana to create the logo for this extension, and I’ll also submit it for review and try to publish it so that it can actually be used by the public.</p>
-</blockquote>
 <p>````</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
