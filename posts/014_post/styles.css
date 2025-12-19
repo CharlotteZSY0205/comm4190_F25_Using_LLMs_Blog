@@ -23,7 +23,7 @@ body,
     background-image: url('https://www.transparenttextures.com/patterns/white-paper.png');
     max-width: 750px;
     margin: 40px auto;
-    padding: 60px 50px;
+    padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 
         0 15px 35px rgba(0,0,0,0.05),
@@ -31,7 +31,8 @@ body,
     position: relative;
     border: 1px solid #f2eee4;
     text-align: center;
-    overflow: visible;
+    overflow: hidden;
+    word-wrap: break-word;
     z-index: 1;
 }
 
@@ -51,7 +52,7 @@ body,
 /* Typography Hierarchy */
 .lyrics-title {
     font-family: 'Mountains of Christmas', cursive;
-    font-size: 3.5em;
+    font-size: 1.8em;
     color: #8b0000; /* Deep Red */
     margin-bottom: 5px;
     letter-spacing: 1px;
@@ -61,23 +62,23 @@ body,
 .subtitle {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: 1.4em;
+    font-size: 1.1em;
     color: #d4af37; /* Gold */
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .header-tags {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .header-tag {
     font-family: 'Lora', serif;
-    font-size: 0.8em;
+    font-size: 0.7em;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: #2d5a27;
     border-bottom: 1px solid #d4af37;
     padding-bottom: 3px;
@@ -86,10 +87,10 @@ body,
 /* Lyrics Content */
 .lyrics-content {
     font-family: 'Lora', serif;
-    font-size: 1.2em;
-    line-height: 2.2; /* Increased for cozy songbook feel */
+    font-size: 1.05em;
+    line-height: 1.8; /* Adjusted for better readability */
     color: #2c3e50;
-    max-width: 550px;
+    max-width: 90%;
     margin: 0 auto;
     padding-bottom: 40px;
 }
@@ -101,7 +102,7 @@ body,
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #8b0000; /* Dark Red */
-    margin: 35px 0 10px;
+    margin: 20px 0 5px;
     opacity: 0.6;
     font-weight: 700;
 }
