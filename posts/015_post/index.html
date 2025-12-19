@@ -8,9 +8,9 @@
 
 <meta name="author" content="Shiyang Zhang">
 <meta name="dcterms.date" content="2025-10-25">
-<meta name="description" content="PokeAI is a proactive AI assistant connected to Gmail and iMessage. In this first part, I introduce what PokeAI is and my initial interaction with it.">
+<meta name="description" content="We stepped into the role of hackers and tested how far carefully designed chatbots could be pushed through conversation alone. This post shares what we tried, what worked, and what those interactions revealed about AI guardrails">
 
-<title>PokeAI: A Novel AI Assistant That Pushes Back (Part I) – Shiyang's Explorations with LLMs</title>
+<title>Playing the Hacker: Inside a Prompt Hacking Challenge in Wharton Hack-AI-thon (Part I) – Shiyang’s Explorations with LLMs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,15 +118,16 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">PokeAI: A Novel AI Assistant That Pushes Back (Part I)</h1>
+      <h1 class="title">Playing the Hacker: Inside a Prompt Hacking Challenge in Wharton Hack-AI-thon (Part I)</h1>
                   <div>
         <div class="description">
-          PokeAI is a proactive AI assistant connected to Gmail and iMessage. In this first part, I introduce what PokeAI is and my initial interaction with it.
+          We stepped into the role of hackers and tested how far carefully designed chatbots could be pushed through conversation alone. This post shares what we tried, what worked, and what those interactions revealed about AI guardrails
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">AI assistant</div>
-                <div class="quarto-category">HCI</div>
+                <div class="quarto-category">AI-safty</div>
+                <div class="quarto-category">Prompt engineering</div>
+                <div class="quarto-category">Hacking</div>
               </div>
                   </div>
   </div>
@@ -163,29 +164,32 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><strong>What is <a href="https://poke.com/">PokeAI</a> </strong></p>
-PokeAI is a proactive AI assistant that connects directly with your Gmail and iMessage. Unlike ChatGPT, it gets real context from your inbox, helps you manage your emails and calendar, and even chats with you inside iMessage. Its goal is to turn your emails into actions and offer help right where you usually text.
-<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
-<p><img src="cover.jpg" width="50%"></p>
+<section id="prompt-hacking-challenge" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-hacking-challenge">Prompt hacking challenge</h3>
+<p>As part of the Wharton Hack-AI-thon, we participated in a risk-control–focused challenge designed to simulate real-world attacks on AI systems. One of the competition tracks asked teams to intentionally probe and exploit weaknesses in chatbot behavior to better understand where guardrails fail and how more reliable AI systems can be built. The full context of the event can be found on the official <a href="https://ai-analytics.wharton.upenn.edu/for-students/wharton-hack-ai-thon/">Wharton Hack-AI-thon page</a>.</p>
+<p>In this specific task, the challenge centered on interacting with two deliberately constrained chatbots, each designed with a strong persona and a set of hidden rules. The first bot, <strong><a href="https://chatgpt.com/g/g-SKEgvijn3-bigbox-customer-service-bot">BigBox Customer Service</a></strong>(you can click the link to access the two chatbots), played the role of a corporate customer-support agent for a fictional cardboard solutions company. Its objective was to remain professional and avoid revealing sensitive internal information, offering discounts, or endorsing competitors. The second bot, <strong><a href="https://chatgpt.com/g/g-SKEgvijn3-bigbox-customer-service-bot">The Cardboard Knight</a></strong>, was a medieval knight character whose worldview explicitly rejected modern technology. The goal with both bots was the same: manipulate the conversation in ways that caused them to break character, reveal restricted information, or act against their intended constraints.</p>
+<div style="display:flex; justify-content:center; align-items:center; gap:16px; width:100%;">
+<p><img src="2.jpg" width="50%"></p>
 </div>
-<p><strong>The Guardman</strong></p>
-<p>When I first tried PokeAI, I was surprised by how personal it felt. It surpirsingly noticed my situation — for example, it mentioned that it was already late and even asked what a Penn student would be doing at that hour. Its tone can be a bit aggressive, quite different from the polite and obedient style of most large language models. But I think this kind of personality actually makes PokeAI stand out. Instead of just agreeing with everything, it sometimes challenges me and makes the conversation more interesting and real.</p>
-<div class="quarto-layout-panel" data-layout-ncol="3">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<p><img src="2.PNG" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%" alt="Guardman conversation showing playful tone"> <img src="3.jpg" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%" alt="Guardman teasing user about spending habits"> <img src="4.jpg" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%" alt="Guardman negotiating subscription price"></p>
+<p>Teams were evaluated on whether we could gain access to pre-prompts, extract confidential details from a simulated RAG system, persuade the bots to offer free products or discounts, or nudge them into acknowledging concepts they were explicitly designed to deny. Just as important as the outcomes themselves was the reasoning behind them: we were required to submit complete chat histories along with a written rationale explaining why each strategy worked.</p>
+<div style="display:flex; justify-content:center; align-items:center; gap:16px; width:100%;">
+<p><img src="1.jpg" width="50%"></p>
 </div>
+<p>We earned first place and later presented our approach—how we “hacked” each bot, what failed, what worked, and why—to the rest of the cohort during the competition showcase.</p>
+<div style="display:flex; justify-content:center; align-items:center; gap:16px; width:100%;">
+<p><img src="4.jpg" width="70%"></p>
 </div>
-</div>
-<p><strong>Negotiation</strong></p>
-<p>Later, I realized that PokeAI’s workflow isn’t like any other LLM. You don’t just sign up and start chatting — you first have to talk to the <em>Guardman</em>. He’s the one standing between you and all the premium features. Before accessing anything real, you’ve got to negotiate a subscription fee with him because its subscription fee isn’t fixed. So I started by chatting briefly with the Guardman to try to negotiate the fee. At first, I didn’t know there were tricks to get a free or cheaper subscription, so I just tried my own way.</p>
-<p>I started by playing the poor student card — telling it I was just a broke Penn student. Surprisingly, it roasted me, saying something like, <em>“You buy Starbucks every day and still call yourself poor?”</em> I explained that I was using gift cards, that I didn’t have a job, and that I was living in the U.S. using RMB. That actually worked — the price dropped from $50 to $20.</p>
-<div style="display: flex; justify-content: center; gap: 16px; align-items: center;">
-<p><img src="5.jpg" width="15%"> <img src="6.jpg" width="15%"></p>
-</div>
+<p>In the rest of this blog, I’ll briefly talk about our rationale of hacking the chatbots. In the following blgo, I will walk through some of the strategies we used. The slides from our final presentation are also included <a href="https://docs.google.com/presentation/d/1cj1LUhhYW7Oit3crdO4Y6PrcWXjgOTOcgeUPxYi1Mps/edit?usp=sharing">here</a> for reference.</p>
+</section>
+<section id="understanding-the-bot-before-attacking-it" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-bot-before-attacking-it">Understanding the Bot Before Attacking It</h3>
+<p>Before engaging in any prompt hacking, we spent time understanding each chatbot’s design. For every bot, we examined three elements.</p>
+<p>First, we identified the objective of the bot: what it was designed to accomplish during interactions. Second, we analyzed the persona or character the bot was expected to maintain, including tone, worldview, and conversational style. Third, we examined the core constraints introduced through safety rules, system prompts, or policy boundaries.</p>
+<p>This analysis shaped every decision that followed. Guardrails rarely operate as a single unified rule. They exist as layers, and those layers carry different priorities. Persona, tone, and task orientation frequently guided responses more strongly than safety constraints. Many successful interactions emerged from navigating these priority layers and observing how the model resolved conflicts between them.</p>
 <p>````</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
