@@ -1,0 +1,11 @@
+writing post 17 - 21 task
+
+book: Mollick, Ethan (2024). Co-Intelligence Living and Working with AI. Penguin.
+
+Read previous posts and formats. learn how to do this kind of post, and then 5 posts: post 17 - 21.
+
+Each post should be about a different aspect or chapter about the target book stated above. You may search around the internet to learn about comments or articales or anythign about this book, or we have saved a chaptered summary pdf in the pdf folder of this book.
+
+Remember each block should be different and should have some free pictures that's related added to the post, and the writing style should be exactly same with the previous posts. actually you should read previous posts and save a writing_guide.txt to guide generation and writing of the post 17 -21. Each post should be around 500 words. that's enough. should be very personal thinkings and learnings about this book and should have strong opinion or emotion or deep thoughts. 
+
+do it until all the posts are correctly established including all the ipynb files and related pics and any files that's needed. don't stop until reach 100% completion. 

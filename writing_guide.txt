@@ -1,0 +1,47 @@
+# Writing Guide for AI Blog Posts
+
+## 1. Format and Structure
+- **File Type**: Jupyter Notebook (`.ipynb`).
+- **Metadata**: Every post must start with a `raw` cell containing YAML metadata:
+  ```yaml
+  ---
+  title: "Catchy and Descriptive Title"
+  description: "A brief summary of the post's content."
+  author: "Shiyang Zhang"
+  date: "MM/DD/YYYY"
+  categories:
+    - Category1
+    - Category2
+  image: cover_image.jpg
+  ---
+  ```
+- **Headers**: Use `##` for main sections and `###` for subsections.
+- **Images**: Center images using HTML:
+  ```html
+  <div style="display:flex; justify-content:center; align-items:center; gap:16px; width:100%;">
+    <img src="image_name.png" width="70%" />
+  </div>
+  ```
+- **Length**: Approximately 500 words per post.
+
+## 2. Writing Style
+- **Voice**: First-person ("I", "We", "My").
+- **Tone**: Professional yet personal, reflective, and engaging. It should feel like a personal journey of discovery.
+- **Content**:
+  - Focus on personal thoughts, emotions, and deep reflections.
+  - Strong opinions are encouraged.
+  - Connect the book's concepts to real-world experiences or AI interactions.
+  - Use examples, anecdotes, or "experiments" (like asking an LLM a specific question).
+- **Perspective**: The author is a student or practitioner exploring the world of LLMs and AI, specifically through the lens of Ethan Mollick's "Co-Intelligence".
+
+## 3. Content Themes (Ethan Mollick's Co-Intelligence)
+- **Co-Intelligence**: The idea of working *with* AI as a partner, not just a tool.
+- **The Centaur and the Cyborg**: Different ways of integrating AI into work.
+- **The Jagged Frontier**: Understanding where AI excels and where it fails.
+- **AI as a Person/Alien**: Treating AI as a creative partner or a strange intelligence.
+- **Future of Work/Education**: How AI changes how we learn and work.
+
+## 4. Visuals
+- Include at least 2-3 images per post.
+- Images should be relevant to the text (e.g., screenshots of AI chats, conceptual diagrams, or related photos).
+- Use descriptive filenames (e.g., `jagged_frontier.png`, `centaur_work.jpg`).
