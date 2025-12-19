@@ -7,12 +7,12 @@ body,
 .navbar,
 #quarto-content,
 .quarto-container {
-    background-color: #fff9f0 !important; /* Soft Cream */
+    background-color: #fffcf5 !important; /* Even lighter, warmer cream */
     background-image: 
-        url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
-        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.8) 0%, transparent 50%) !important;
+        url('https://www.transparenttextures.com/patterns/snow.png'),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.9) 0%, transparent 60%) !important;
     background-attachment: fixed !important;
-    color: #2d5a27 !important; /* Pine Green */
+    color: #1b4d3e !important; /* Deep Forest Green */
     border: none !important;
     box-shadow: none !important;
 }
@@ -20,19 +20,18 @@ body,
 /* The Lyric Card / Songbook Feel */
 .christmas-container {
     background: #ffffff;
-    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 80px 60px;
-    border-radius: 4px;
+    background-image: url('https://www.transparenttextures.com/patterns/white-paper.png');
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 60px 50px;
+    border-radius: 8px;
     box-shadow: 
-        0 10px 30px rgba(0,0,0,0.05),
-        0 1px 3px rgba(0,0,0,0.1),
-        inset 0 0 100px rgba(253, 245, 230, 0.5);
+        0 15px 35px rgba(0,0,0,0.05),
+        0 5px 15px rgba(0,0,0,0.03);
     position: relative;
-    border: 1px solid #f0e6d2;
+    border: 1px solid #f2eee4;
     text-align: center;
-    overflow: visible; /* Allow decorations to pop out */
+    overflow: visible;
     z-index: 1;
 }
 
@@ -52,10 +51,11 @@ body,
 /* Typography Hierarchy */
 .lyrics-title {
     font-family: 'Mountains of Christmas', cursive;
-    font-size: 4em;
-    color: #c41e3a; /* Warm Red */
-    margin-bottom: 10px;
+    font-size: 3.5em;
+    color: #8b0000; /* Deep Red */
+    margin-bottom: 5px;
     letter-spacing: 1px;
+    font-weight: 700;
 }
 
 .subtitle {
@@ -86,22 +86,24 @@ body,
 /* Lyrics Content */
 .lyrics-content {
     font-family: 'Lora', serif;
-    font-size: 1.25em;
-    line-height: 1.8;
-    color: #333;
-    max-width: 600px;
+    font-size: 1.2em;
+    line-height: 2.2; /* Increased for cozy songbook feel */
+    color: #2c3e50;
+    max-width: 550px;
     margin: 0 auto;
+    padding-bottom: 40px;
 }
 
 .lyrics-section-label {
     display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 0.7em;
+    font-size: 0.75em;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #c41e3a;
-    margin: 40px 0 15px;
-    opacity: 0.7;
+    letter-spacing: 2px;
+    color: #8b0000; /* Dark Red */
+    margin: 35px 0 10px;
+    opacity: 0.6;
+    font-weight: 700;
 }
 
 .lyrics-line {
@@ -110,33 +112,36 @@ body,
 }
 
 .gold-text {
-    color: #c41e3a;
-    font-weight: 700;
-    border-bottom: 1px double #d4af37;
+    color: #b22222; /* Firebrick Red */
+    font-weight: 600;
+    background: linear-gradient(to bottom, transparent 60%, #fdf5e6 60%);
+    padding: 0 2px;
 }
 
 /* Decorations */
 .sticker {
     position: absolute;
-    width: 120px;
-    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.1));
+    width: 70px;
+    filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.05));
     z-index: 5;
     pointer-events: none;
+    opacity: 0.8;
 }
 
-.sticker-top-left { top: -40px; left: -40px; transform: rotate(-15deg); }
-.sticker-top-right { top: -30px; right: -50px; transform: rotate(10deg); }
-.sticker-bottom-left { bottom: -20px; left: -30px; transform: rotate(5deg); }
-.sticker-bottom-right { bottom: -40px; right: -20px; transform: rotate(-10deg); }
+.sticker-top-left { top: -20px; left: -20px; transform: rotate(-10deg); }
+.sticker-top-right { top: -15px; right: -25px; transform: rotate(10deg); }
+.sticker-bottom-left { bottom: -10px; left: -15px; transform: rotate(5deg); }
+.sticker-bottom-right { bottom: -20px; right: -10px; transform: rotate(-10deg); }
 
-.garland-lights {
+/* Subtle Background Snow Pattern */
+.christmas-container::after {
+    content: '';
     position: absolute;
-    top: -10px;
+    top: 0;
     left: 0;
-    width: 100%;
-    height: 40px;
-    background-image: url('https://img.icons8.com/color/96/christmas-star.png');
-    background-size: 30px;
-    background-repeat: repeat-x;
-    opacity: 0.2;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/snow.png');
+    opacity: 0.05;
+    pointer-events: none;
 }
