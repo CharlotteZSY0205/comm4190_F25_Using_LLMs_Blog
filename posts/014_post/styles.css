@@ -1,37 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Mountains+of+Christmas&display=swap');
 
-body {
-    background-color: #0a2e1a; /* Deep Midnight Green */
+/* Coherent Background Overrides */
+body, 
+.quarto-title-block, 
+#quarto-header, 
+.navbar,
+#quarto-content,
+.quarto-container {
+    background: #0a2e1a !important; /* Deep Midnight Green */
     background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
-    animation: stars 20s linear infinite;
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 80%),
+        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 20px) !important;
+    background-size: 100% 100%, 400px 400px !important;
+    background-attachment: fixed !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: stars 30s linear infinite !important;
 }
 
 @keyframes stars {
-    from { background-position: 0 0, 40px 60px, 130px 270px; }
-    to { background-position: 550px 550px, 390px 410px, 680px 820px; }
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 0 0, 400px 400px; }
 }
 
 .christmas-container {
-    background: linear-gradient(135deg, #fffafa 0%, #fdf5e6 100%), /* Parchment/Snow mix */
+    background: linear-gradient(135deg, #fffafa 0%, #fdf5e6 100%),
                 url('https://www.transparenttextures.com/patterns/snow.png');
     animation: snow-drift 20s linear infinite;
     border: 15px solid transparent;
     border-image: url('https://img.icons8.com/color/48/candy-cane.png') 30 round;
-    padding: 80px 40px;
-    margin: 40px auto;
+    padding: 100px 40px 60px;
+    margin: 60px auto;
     max-width: 900px;
-    border-radius: 20px;
+    border-radius: 25px;
     text-align: center;
     font-family: 'Mountains of Christmas', cursive;
     color: #165b33;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 36, 38, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 @keyframes snow-drift {
@@ -121,4 +129,100 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 1.1em;
+}
+
+/* Garland Lights */
+.garland-lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.garland-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 15px;
+    animation: blink 1.5s infinite alternate;
+}
+
+.light-red { background: #d42426; box-shadow: 0 0 10px #d42426; }
+.light-green { background: #165b33; box-shadow: 0 0 10px #165b33; animation-delay: 0.5s; }
+.light-gold { background: #f8b229; box-shadow: 0 0 10px #f8b229; animation-delay: 1s; }
+
+@keyframes blink {
+    from { opacity: 0.4; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1.1); }
+}
+
+.garland-label {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #d42426;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px white;
+}
+
+/* Subtitle and Tags */
+.subtitle {
+    font-size: 1.2em;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.header-tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.header-tag {
+    background: #165b33;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Structured Lyrics */
+.lyrics-header {
+    font-size: 2.5em;
+    color: #d42426;
+    margin-top: 40px;
+}
+
+.lyrics-description {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.lyrics-section-label {
+    display: block;
+    font-weight: bold;
+    color: #d42426;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.lyrics-line {
+    margin: 5px 0;
 }
