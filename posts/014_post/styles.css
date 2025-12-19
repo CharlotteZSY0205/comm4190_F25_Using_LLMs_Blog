@@ -1,228 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Mountains+of+Christmas&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
 
-/* Coherent Background Overrides */
+/* Overall Atmosphere: Light, Warm, Festive */
 body, 
 .quarto-title-block, 
 #quarto-header, 
 .navbar,
 #quarto-content,
 .quarto-container {
-    background: #0a2e1a !important; /* Deep Midnight Green */
+    background-color: #fff9f0 !important; /* Soft Cream */
     background-image: 
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 80%),
-        radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 20px) !important;
-    background-size: 100% 100%, 400px 400px !important;
+        url('https://www.transparenttextures.com/patterns/paper-fibers.png'),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.8) 0%, transparent 50%) !important;
     background-attachment: fixed !important;
+    color: #2d5a27 !important; /* Pine Green */
     border: none !important;
     box-shadow: none !important;
-    animation: stars 30s linear infinite !important;
 }
 
-@keyframes stars {
-    from { background-position: 0 0, 0 0; }
-    to { background-position: 0 0, 400px 400px; }
-}
-
+/* The Lyric Card / Songbook Feel */
 .christmas-container {
-    background: linear-gradient(135deg, #fffafa 0%, #fdf5e6 100%),
-                url('https://www.transparenttextures.com/patterns/snow.png');
-    animation: snow-drift 20s linear infinite;
-    border: 15px solid transparent;
-    border-image: url('https://img.icons8.com/color/48/candy-cane.png') 30 round;
-    padding: 100px 40px 60px;
+    background: #ffffff;
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    max-width: 800px;
     margin: 60px auto;
-    max-width: 900px;
-    border-radius: 25px;
-    text-align: center;
-    font-family: 'Mountains of Christmas', cursive;
-    color: #165b33;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    padding: 80px 60px;
+    border-radius: 4px;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.05),
+        0 1px 3px rgba(0,0,0,0.1),
+        inset 0 0 100px rgba(253, 245, 230, 0.5);
     position: relative;
-    overflow: hidden;
+    border: 1px solid #f0e6d2;
+    text-align: center;
+    overflow: visible; /* Allow decorations to pop out */
     z-index: 1;
 }
 
-@keyframes snow-drift {
-    from { background-position: 0 0, 0 0; }
-    to { background-position: 0 0, 500px 1000px; }
-}
-
-.snow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.png-decoration {
-    width: 80px;
-    height: 80px;
-    margin: 10px;
-    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
-    transition: transform 0.3s ease;
-}
-
-.png-decoration:hover {
-    transform: scale(1.2) rotate(5deg);
-}
-
-.floating-santa {
+/* Decorative Ribbon / Border */
+.christmas-container::before {
+    content: '';
     position: absolute;
     top: 20px;
-    width: 120px;
-    animation: fly-across 20s linear infinite;
-    z-index: 2;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid #d4af37; /* Gold Accent */
+    pointer-events: none;
+    opacity: 0.3;
 }
 
-@keyframes fly-across {
-    0% { left: -150px; transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-20px) rotate(5deg); }
-    50% { transform: translateY(0) rotate(0deg); }
-    75% { transform: translateY(20px) rotate(-5deg); }
-    100% { left: 110%; transform: translateY(0) rotate(0deg); }
-}
-
-.corner-decoration {
-    position: absolute;
-    width: 100px;
-    z-index: 1;
-}
-
-.top-left { top: -10px; left: -10px; transform: rotate(-15deg); }
-.top-right { top: -10px; right: -10px; transform: rotate(15deg); }
-.bottom-left { bottom: -10px; left: -10px; transform: rotate(15deg); }
-.bottom-right { bottom: -10px; right: -10px; transform: rotate(-15deg); }
-
+/* Typography Hierarchy */
 .lyrics-title {
-    font-size: 4.5em;
-    color: #d42426;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 0px #f8b229, 4px 4px 0px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 2;
-    letter-spacing: 2px;
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 4em;
+    color: #c41e3a; /* Warm Red */
+    margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
-.lyrics-content {
-    font-size: 1.8em;
-    line-height: 2;
-    white-space: pre-wrap;
-    position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
-    padding: 40px;
-    border-radius: 20px;
-    border: 2px dashed #d42426;
-    display: inline-block;
-    box-shadow: inset 0 0 20px rgba(212, 36, 38, 0.1);
-}
-
-.gold-text {
-    color: #d42426;
-    font-weight: bold;
-    background: linear-gradient(to right, #f8b229, #d42426);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.1em;
-}
-
-/* Garland Lights */
-.garland-lights {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    z-index: 10;
-    background: rgba(0,0,0,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.garland-light {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin: 0 15px;
-    animation: blink 1.5s infinite alternate;
-}
-
-.light-red { background: #d42426; box-shadow: 0 0 10px #d42426; }
-.light-green { background: #165b33; box-shadow: 0 0 10px #165b33; animation-delay: 0.5s; }
-.light-gold { background: #f8b229; box-shadow: 0 0 10px #f8b229; animation-delay: 1s; }
-
-@keyframes blink {
-    from { opacity: 0.4; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1.1); }
-}
-
-.garland-label {
-    position: absolute;
-    top: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.9em;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: #d42426;
-    font-weight: bold;
-    text-shadow: 1px 1px 0px white;
-}
-
-/* Subtitle and Tags */
 .subtitle {
-    font-size: 1.2em;
-    color: #555;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    margin-bottom: 20px;
+    font-size: 1.4em;
+    color: #d4af37; /* Gold */
+    margin-bottom: 30px;
 }
 
 .header-tags {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 40px;
+    gap: 15px;
+    margin-bottom: 50px;
 }
 
 .header-tag {
-    background: #165b33;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
+    font-family: 'Lora', serif;
     font-size: 0.8em;
-    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2d5a27;
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 3px;
 }
 
-/* Structured Lyrics */
-.lyrics-header {
-    font-size: 2.5em;
-    color: #d42426;
-    margin-top: 40px;
-}
-
-.lyrics-description {
-    color: #666;
-    margin-bottom: 30px;
+/* Lyrics Content */
+.lyrics-content {
+    font-family: 'Lora', serif;
+    font-size: 1.25em;
+    line-height: 1.8;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .lyrics-section-label {
     display: block;
-    font-weight: bold;
-    color: #d42426;
-    margin-top: 25px;
-    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7em;
     text-transform: uppercase;
-    font-size: 0.9em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+    letter-spacing: 3px;
+    color: #c41e3a;
+    margin: 40px 0 15px;
+    opacity: 0.7;
 }
 
 .lyrics-line {
-    margin: 5px 0;
+    margin: 0;
+    padding: 2px 0;
+}
+
+.gold-text {
+    color: #c41e3a;
+    font-weight: 700;
+    border-bottom: 1px double #d4af37;
+}
+
+/* Decorations */
+.sticker {
+    position: absolute;
+    width: 120px;
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.1));
+    z-index: 5;
+    pointer-events: none;
+}
+
+.sticker-top-left { top: -40px; left: -40px; transform: rotate(-15deg); }
+.sticker-top-right { top: -30px; right: -50px; transform: rotate(10deg); }
+.sticker-bottom-left { bottom: -20px; left: -30px; transform: rotate(5deg); }
+.sticker-bottom-right { bottom: -40px; right: -20px; transform: rotate(-10deg); }
+
+.garland-lights {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-image: url('https://img.icons8.com/color/96/christmas-star.png');
+    background-size: 30px;
+    background-repeat: repeat-x;
+    opacity: 0.2;
 }
