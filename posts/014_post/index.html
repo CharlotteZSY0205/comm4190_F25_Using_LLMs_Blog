@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Shiyang Zhang">
-<meta name="dcterms.date" content="2025-12-24">
-<meta name="description" content="A festive Christmas tribute page with cozy styling, decorations, and centered lyrics.">
+<meta name="dcterms.date" content="2025-12-18">
+<meta name="description" content="A warm, glowing page for a classic Christmas love song.">
 
 <title>All I Want For Christmas Is You – Shiyang’s Explorations with LLMs</title>
 <style>
@@ -121,13 +121,13 @@ ul.task-list li input[type="checkbox"] {
       <h1 class="title">All I Want For Christmas Is You</h1>
                   <div>
         <div class="description">
-          A festive Christmas tribute page with cozy styling, decorations, and centered lyrics.
+          A warm, glowing page for a classic Christmas love song.
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">Christmas</div>
                 <div class="quarto-category">Music</div>
-                <div class="quarto-category">Web Design</div>
+                <div class="quarto-category">Holiday</div>
               </div>
                   </div>
   </div>
@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 24, 2025</p>
+        <p class="date">December 18, 2025</p>
       </div>
     </div>
     
@@ -164,348 +164,47 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<style>
-  :root {
-    --christmas-red: #c62828;
-    --christmas-red-dark: #8e0000;
-    --christmas-green: #2e7d32;
-    --christmas-gold: #ffd54f;
-    --snow-white: #fdfdfd;
-    --night-blue: #0b1020;
-    --soft-cream: #fffaf2;
-    --text-main: #fefefe;
-  }
-
-  body {
-    background: radial-gradient(circle at top, #ffecd2 0, #fcb69f 20%, #922b21 55%, #1b2735 100%);
-    font-family: "Georgia", "Times New Roman", serif;
-    color: var(--text-main);
-  }
-
-  .christmas-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 32px 16px 64px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* soft falling snow */
-  .snowflake {
-    position: fixed;
-    top: -10px;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 10px;
-    pointer-events: none;
-    animation: snow-fall linear infinite;
-    z-index: -1;
-  }
-
-  @keyframes snow-fall {
-    0% { transform: translate3d(0, -10px, 0); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translate3d(-20px, 110vh, 0); opacity: 0; }
-  }
-
-  .christmas-header {
-    text-align: center;
-    max-width: 900px;
-    margin-bottom: 32px;
-    position: relative;
-  }
-
-  .christmas-header h1 {
-    font-size: clamp(2.6rem, 4vw, 3.4rem);
-    margin-bottom: 8px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--snow-white);
-    text-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
-  }
-
-  .christmas-header .subtitle {
-    font-size: 1.05rem;
-    color: #ffe6e6;
-    margin-bottom: 20px;
-  }
-
-  .christmas-garland {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 18px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(198,40,40,0.85), rgba(46,125,50,0.9));
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
-    margin-bottom: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-  }
-
-  .garland-lights {
-    display: flex;
-    gap: 6px;
-  }
-
-  .garland-light {
-    width: 8px;
-    height: 14px;
-    border-radius: 8px;
-    background: var(--christmas-gold);
-    box-shadow: 0 0 10px rgba(255, 213, 79, 0.9);
-  }
-
-  .garland-label {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #fff8e1;
-  }
-
-  .header-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .header-tag {
-    font-size: 0.8rem;
-    padding: 4px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: rgba(11,16,32,0.35);
-    backdrop-filter: blur(8px);
-  }
-
-  .christmas-main {
-    width: 100%;
-    max-width: 960px;
-    display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    gap: 24px;
-  }
-
-  @media (max-width: 800px) {
-    .christmas-main {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-
-  .lyrics-card {
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.28), rgba(255,255,255,0.06));
-    border-radius: 24px;
-    padding: 24px 24px 28px;
-    box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #1b1820;
-    background-clip: padding-box;
-  }
-
-  .lyrics-card h2 {
-    font-size: 1.4rem;
-    text-align: center;
-    margin-bottom: 8px;
-    color: var(--christmas-red-dark);
-  }
-
-  .lyrics-card .song-meta {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #5d4037;
-    margin-bottom: 16px;
-  }
-
-  .lyrics-wrap {
-    text-align: center; /* center the lyrics text */
-    max-width: 640px;
-    margin: 0 auto;
-    font-size: 0.98rem;
-    line-height: 1.9;
-    color: #3e2723;
-  }
-
-  .lyrics-section-label {
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.74rem;
-    margin: 18px 0 6px;
-    color: var(--christmas-green);
-  }
-
-  .lyrics-line {
-    margin: 0;
-  }
-
-  .lyrics-note {
-    font-size: 0.8rem;
-    margin-top: 16px;
-    color: #6d4c41;
-  }
-
-  .side-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .character-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .character-card {
-    background: rgba(11, 16, 32, 0.85);
-    border-radius: 18px;
-    padding: 14px 14px 12px;
-    border: 1px solid rgba(255,255,255,0.16);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
-  }
-
-  .character-badge {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, var(--christmas-gold), var(--christmas-red-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    color: #fff8e1;
-    margin-bottom: 6px;
-    box-shadow: 0 0 12px rgba(255,213,79,0.7);
-  }
-
-  .character-title {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #ffebee;
-    margin-bottom: 4px;
-  }
-
-  .character-text {
-    font-size: 0.8rem;
-    color: #ffebee;
-    opacity: 0.83;
-  }
-
-  .cozy-footer {
-    margin-top: 18px;
-    font-size: 0.8rem;
-    color: #ffeae0;
-    text-align: center;
-  }
-</style>
-<!-- simple snowflakes (no emoji, just typographic symbols) -->
-<div class="snowflake" style="left: 5%; animation-duration: 14s; animation-delay: 0s;">
-*
-</div>
-<div class="snowflake" style="left: 20%; animation-duration: 17s; animation-delay: 1s;">
-*
-</div>
-<div class="snowflake" style="left: 40%; animation-duration: 13s; animation-delay: 2s;">
-*
-</div>
-<div class="snowflake" style="left: 60%; animation-duration: 18s; animation-delay: 0.5s;">
-*
-</div>
-<div class="snowflake" style="left: 80%; animation-duration: 15s; animation-delay: 1.5s;">
-*
-</div>
-<div class="christmas-page">
-<header class="christmas-header">
-<div class="christmas-garland">
-<pre><code>  &lt;div class="garland-lights"&gt;
-    &lt;div class="garland-light"&gt;&lt;/div&gt;
-    &lt;div class="garland-light" style="background: var(--christmas-green); box-shadow: 0 0 10px rgba(46,125,50,0.9);"&gt;&lt;/div&gt;
-    &lt;div class="garland-light"&gt;&lt;/div&gt;
-    &lt;div class="garland-light" style="background: #ff6f61; box-shadow: 0 0 10px rgba(255,111,97,0.9);"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;span class="garland-label"&gt;cozy christmas listening&lt;/span&gt;
-&lt;/div&gt;
-&lt;h1&gt;All I Want For Christmas Is You&lt;/h1&gt;
-&lt;p class="subtitle"&gt;A warm, glowing page for a classic Christmas love song.&lt;/p&gt;
-&lt;div class="header-tags"&gt;
-  &lt;span class="header-tag"&gt;Christmas Song&lt;/span&gt;
-  &lt;span class="header-tag"&gt;Holiday Mood&lt;/span&gt;
-  &lt;span class="header-tag"&gt;Cozy Night&lt;/span&gt;
-&lt;/div&gt;</code></pre>
-</div></header>
-<main class="christmas-main">
-<section class="lyrics-card">
-<h2 class="anchored">
-Lyrics
-</h2>
-<p class="song-meta">
-A dedicated space for you to sing along and feel the holiday magic.
+<div class="christmas-container">
+<!-- Subtle Corner Decorations -->
+<p><img src="https://img.icons8.com/color/96/christmas-tree.png" class="sticker sticker-top-left" alt=""> <img src="https://img.icons8.com/color/96/santa.png" class="sticker sticker-top-right" alt=""></p>
+<h1 class="lyrics-title">
+All I Want For Christmas Is You
+</h1>
+<p class="subtitle">
+A warm, glowing page for a classic Christmas love song
 </p>
-<div class="lyrics-wrap">
-<pre><code>    &lt;p class="lyrics-section-label"&gt;[Intro]&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Put the intro lines of the song here &gt;&lt;/p&gt;
-
-    &lt;p class="lyrics-section-label"&gt;[Verse 1]&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Paste the first verse here, one or two lines per paragraph &gt;&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Continue the verse here... &gt;&lt;/p&gt;
-
-    &lt;p class="lyrics-section-label"&gt;[Chorus]&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Paste the chorus lines here &gt;&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Repeat or add more chorus lines... &gt;&lt;/p&gt;
-
-    &lt;p class="lyrics-section-label"&gt;[Verse 2]&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Paste the second verse here &gt;&lt;/p&gt;
-
-    &lt;p class="lyrics-section-label"&gt;[Bridge / Final Chorus]&lt;/p&gt;
-    &lt;p class="lyrics-line"&gt;&lt; Paste the bridge and final chorus here &gt;&lt;/p&gt;
-
-    &lt;p class="lyrics-note"&gt;You can replace each placeholder line with the actual lyrics of the song. All text in this block is centered for a clean, sing-along layout.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
-
-&lt;aside class="side-panel"&gt;
-  &lt;div class="character-row"&gt;
-    &lt;div class="character-card"&gt;
-      &lt;div class="character-badge"&gt;Tree&lt;/div&gt;
-      &lt;div class="character-title"&gt;Christmas Tree&lt;/div&gt;
-      &lt;p class="character-text"&gt;Twinkling lights, ornaments, and a glowing star watching over your playlist.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="character-card"&gt;
-      &lt;div class="character-badge"&gt;Bell&lt;/div&gt;
-      &lt;div class="character-title"&gt;Jingle Bells&lt;/div&gt;
-      &lt;p class="character-text"&gt;Soft chimes in the background as you hum your favorite chorus.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="character-row"&gt;
-    &lt;div class="character-card"&gt;
-      &lt;div class="character-badge"&gt;Rein&lt;/div&gt;
-      &lt;div class="character-title"&gt;Reindeer&lt;/div&gt;
-      &lt;p class="character-text"&gt;Dashing through the snow, carrying wishes across a winter sky.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="character-card"&gt;
-      &lt;div class="character-badge"&gt;Santa&lt;/div&gt;
-      &lt;div class="character-title"&gt;Santa Claus&lt;/div&gt;
-      &lt;p class="character-text"&gt;Checking his list while your favorite song plays on repeat.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="cozy-footer"&gt;
-    Light a candle, grab a blanket, and let this page be the backdrop for your holiday soundtrack.
-  &lt;/div&gt;
-&lt;/aside&gt;</code></pre>
-</div></section></main>
+<div class="header-tags">
+<pre><code>&lt;span class="header-tag"&gt;Christmas Song&lt;/span&gt;
+&lt;span class="header-tag"&gt;Holiday Mood&lt;/span&gt;
+&lt;span class="header-tag"&gt;Cozy Night&lt;/span&gt;</code></pre>
+</div>
+<div class="lyrics-content">
+<p><span class="lyrics-section-label">[Intro]</span></p>
+<p>I don’t want a lot for Christmas There is just one thing I need I don’t care about the presents Underneath the Christmas tree</p>
+<p>I just want you for my own More than you could ever know Make my wish come true <span class="gold-text">All I want for Christmas is you, yeah</span></p>
+<p><span class="lyrics-section-label">[Verse 1]</span></p>
+<p>I don’t want a lot for Christmas There is just one thing I need And I don’t care about the presents Underneath the Christmas tree</p>
+<p>I don’t need to hang my stocking There upon the fireplace Santa Claus won’t make me happy With a toy on Christmas Day</p>
+<p>I just want you for my own More than you could ever know Make my wish come true <span class="gold-text">All I want for Christmas is you</span> You, baby</p>
+<p><span class="lyrics-section-label">[Verse 2]</span></p>
+<p>Oh, I won’t ask for much this Christmas I won’t even wish for snow And I’m just gonna keep on waiting Underneath the mistletoe</p>
+<p>I won’t make a list and send it To the North Pole for Saint Nick I won’t even stay awake to Hear those magic reindeer click</p>
+<p>’Cause I just want you here tonight Holding on to me so tight What more can I do? <span class="gold-text">Baby, all I want for Christmas is you</span> You, baby</p>
+<p><span class="lyrics-section-label">[Bridge]</span></p>
+<p>Oh, all the lights are shining so brightly everywhere And the sound of children’s laughter fills the air</p>
+<p>And everyone is singing I hear those sleigh bells ringing Santa, won’t you bring me the one I really need? Won’t you please bring my baby to me?</p>
+<p><span class="lyrics-section-label">[Chorus]</span></p>
+<p>Oh, I don’t want a lot for Christmas This is all I’m asking for I just wanna see my baby Standing right outside my door</p>
+<p>Oh, I just want you for my own More than you could ever know Make my wish come true <span class="gold-text">Baby, all I want for Christmas is you</span> You, baby</p>
+<p><span class="lyrics-section-label">[Outro]</span></p>
+<p><span class="gold-text">All I want for Christmas is you, baby…</span></p>
+</div>
+<p><img src="https://img.icons8.com/color/96/reindeer.png" class="sticker sticker-bottom-left" alt=""> <img src="https://img.icons8.com/color/96/gift--v1.png" class="sticker sticker-bottom-right" alt=""></p>
 </div>
 
 
-</main></div>
 
-
- <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -906,7 +605,7 @@ A dedicated space for you to sing along and feel the holiday magic.
     }
   });
   </script>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 
