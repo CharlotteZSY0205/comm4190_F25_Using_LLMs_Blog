@@ -23,7 +23,7 @@ body,
     background-image: url('https://www.transparenttextures.com/patterns/white-paper.png');
     max-width: 750px;
     margin: 40px auto;
-    padding: 40px 30px;
+    padding: 60px 80px;
     border-radius: 8px;
     box-shadow: 
         0 15px 35px rgba(0,0,0,0.05),
@@ -52,11 +52,15 @@ body,
 /* Typography Hierarchy */
 .lyrics-title {
     font-family: 'Mountains of Christmas', cursive;
-    font-size: 1.8em;
+    font-size: 3.2em;
+    line-height: 1.1;
     color: #8b0000; /* Deep Red */
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     letter-spacing: 1px;
     font-weight: 700;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .subtitle {
@@ -87,10 +91,10 @@ body,
 /* Lyrics Content */
 .lyrics-content {
     font-family: 'Lora', serif;
-    font-size: 1.05em;
+    font-size: 0.95em;
     line-height: 1.8; /* Adjusted for better readability */
     color: #2c3e50;
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     padding-bottom: 40px;
 }
